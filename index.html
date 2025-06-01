@@ -123,16 +123,17 @@
 
         /* Main Content Section */
         .main-content {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
+    max-width: 1200px;
+    margin: 50px auto; /* Changed from 30px to 50px for more distance from search */
+    padding: 0 20px;
+}
         }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+       .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Increased from 20px to 25px for better spacing between cards */
+    margin-bottom: 40px;
         }
 
         .product-card {
@@ -180,7 +181,7 @@
 
 .reviews-section {
     max-width: 1200px;
-    margin: 30px auto 60px auto; /* Changed from '30px auto' to '30px auto 60px auto' */
+    margin: 60px auto 60px auto; /* Increased top margin from 30px to 60px */
     padding: 50px 20px;
 
         }
@@ -361,15 +362,46 @@
         }
 
         /* Responsive Design */
+       
+        .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent with other sections */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+          }
+
+         .header-container,
+    .search-container,
+    .footer-container {
+        padding: 0 15px; /* Consistent mobile padding */
+    }
+    
+    .reviews-section {
+        margin: 40px auto 40px auto; /* Smaller margins on mobile */
+        padding: 30px 15px; /* Less padding on mobile */
+    }
+    
+    .products-grid {
+        gap: 20px; /* Slightly smaller gap on mobile */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+        }
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
+    .main-content {
+        margin: 30px auto; /* Smaller margin on mobile */
+        padding: 0 15px; 
+                
             }
 
             .search-container {
-                flex-direction: column;
-                gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent with other sections */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
             }
 
             .products-grid {
@@ -379,6 +411,17 @@
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
+
+
+}
+
+/* Footer Container - Consistent side margins */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Consistent with other sections */
+}
+                
             }
 
             .nav-links {
