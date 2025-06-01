@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ikoriko Equipments - სავარჯიშო მოწყობილობები</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Ikoriko</title>
     <style>
         * {
             margin: 0;
@@ -15,704 +12,549 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-/* აქ იწყება */
-       <div class="carousel-container">
-  <div class="carousel-slide active">
-    <div class="carousel-content">
-      <div class="text-section">
-        <h2>Extra Business</h2>
-        <p>გახსენი ექსტრაზე შენი ბიზნესი</p>
-      </div>
-      <img src="https://via.placeholder.com/300x200?text=Boxes" alt="Slide 1 Image">
-    </div>
-  </div>
-  <div class="carousel-slide">
-    <div class="carousel-content">
-      <div class="text-section">
-        <h2>Another Slide</h2>
-        <p>მეტი ინფორმაცია აქ</p>
-      </div>
-      <img src="https://via.placeholder.com/300x200?text=More+Boxes" alt="Slide 2 Image">
-    </div>
-  </div>
-
-  <!-- Navigation Arrows -->
-  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-  <button class="next" onclick="moveSlide(1)">&#10095;</button>
-
-  <!-- Dots -->
-  <div class="carousel-dots">
-    <span onclick="setSlide(0)" class="dot active-dot"></span>
-    <span onclick="setSlide(1)" class="dot"></span>
-  </div>
-</div>
-
-     /* აქ მთავერდება*/   
         }
 
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        /* Header Styles */
+        .header {
+            background-color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        nav {
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 24px;
             font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #333;
         }
 
         .nav-links {
             display: flex;
+            gap: 30px;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Search and Actions Section */
+        .search-section {
+            background-color: white;
+            padding: 20px 0;
+        }
+
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
             position: relative;
         }
 
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #667eea;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
+        .search-box input {
             width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            color: white;
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 15px 30px;
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
             text-decoration: none;
-            border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            animation: fadeInUp 1s ease 0.4s both;
+            display: inline-block;
         }
 
-        .cta-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        .btn-dark {
+            background-color: #333;
+            color: white;
         }
 
-        /* Products Section */
-        .products-section {
-            background: white;
-            padding: 80px 0;
-            margin-top: -50px;
-            border-radius: 50px 50px 0 0;
-            position: relative;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+        .btn-light {
+            background-color: #f0f0f0;
             color: #333;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
         .product-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #999;
-            position: relative;
-            overflow: hidden;
+            height: 200px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 15px;
         }
 
-        .product-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .product-card:hover .product-image::before {
-            left: 100%;
-        }
-
-        .product-info {
-            padding: 1.5rem;
-        }
-
-        .product-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
+        .product-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
             color: #333;
         }
 
-        .product-description {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.5;
-        }
-
         .product-price {
-            font-size: 1.4rem;
+            font-size: 18px;
             font-weight: bold;
-            color: #667eea;
-            margin-bottom: 1rem;
+            color: #333;
         }
 
-        .product-button {
-            width: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .product-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 0;
-        }
-
-        .contact-content {
+        /* Large Product Cards */
+        .large-products {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .large-product-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .large-product-image {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .reviews-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: left;
+            color: #333;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            color: #ddd;
+            font-size: 16px;
+        }
+
+        .star.filled {
+            color: #ffd700;
+        }
+
+        .review-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .review-body {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .reviewer {
+            display: flex;
             align-items: center;
+            gap: 10px;
         }
 
-        .contact-info h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .reviewer-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
         }
 
-        .contact-info p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .reviewer-info {
+            font-size: 14px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .reviewer-date {
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: white;
+            border-top: 1px solid #eee;
+            padding: 40px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            margin-bottom: 30px;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 12px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-button {
-            width: 100%;
-            background: white;
-            color: #667eea;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
+            text-decoration: none;
+            color: #666;
         }
 
-        .fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        .footer-right {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #333;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .subscribe-btn {
+            background-color: #333;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">YourStore</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">🏛</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">კოლექციები</a></li>
+                    <li><a href="#">ჩვენი ნაშრომები</a></li>
+                    <li><a href="#">კონტაქტი</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>მკლავჭიდის სავარჯიშო მოწყობილობები</h1>
-            <p>დამზადებულია საქართველოში</p>
-            <a href="#products" class="cta-button">Explore Products</a>
-        </div>
-    </section>
-
-    <section id="products" class="products-section">
-        <div class="container">
-            <h2 class="section-title">ჩვენი პროდუქცია</h2>
-            <div class="products-grid" id="productsGrid">
-                <!-- Products will be generated by JavaScript -->
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="ძიება">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="action-buttons">
+                <a href="#" class="btn btn-dark">შესვლა</a>
+                <a href="#" class="btn btn-light">ღია ნივთები</a>
+                <a href="#" class="btn btn-light">ღია კლასიკი</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>Ready to order or have questions? Contact us through your preferred method.</p>
-                    <div class="social-links">
-                        <a href="mailto:info@yourstore.ge" class="social-link">
-                            📧 Email
-                        </a>
-                        <a href="https://wa.me/995555123456" class="social-link" target="_blank">
-                            📱 WhatsApp
-                        </a>
-                        <a href="https://facebook.com/yourstore" class="social-link" target="_blank">
-                            📘 Facebook
-                        </a>
-                        <a href="https://instagram.com/yourstore" class="social-link" target="_blank">
-                            📷 Instagram
-                        </a>
-                        <a href="https://t.me/yourstore" class="social-link" target="_blank">
-                            ✈️ Telegram
-                        </a>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Small Products Grid -->
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3 class="product-title">Text</h3>
+                <p class="product-price">$0</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3 class="product-title">Text</h3>
+                <p class="product-price">$0</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3 class="product-title">Text</h3>
+                <p class="product-price">$0</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image"></div>
+                <h3 class="product-title">Text</h3>
+                <p class="product-price">$0</p>
+            </div>
+        </div>
+
+        <!-- Large Products -->
+        <div class="large-products">
+            <div class="large-product-card">
+                <div class="large-product-image"></div>
+                <h3 class="product-title">Text</h3>
+                <p class="product-price">$0</p>
+            </div>
+            <div class="large-product-card">
+                <div class="large-product-image"></div>
+                <h3 class="product-title">Text</h3>
+                <p class="product-price">$0</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <h2 class="reviews-title">შეფასებები</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                </div>
+                <h3 class="review-title">Review title</h3>
+                <p class="review-body">Review body</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">Reviewer name</div>
+                        <div class="reviewer-date">Date</div>
                     </div>
                 </div>
-                <form class="contact-form" onsubmit="handleSubmit(event)">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                </div>
+                <h3 class="review-title">Review title</h3>
+                <p class="review-body">Review body</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">Reviewer name</div>
+                        <div class="reviewer-date">Date</div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                </div>
+                <h3 class="review-title">Review title</h3>
+                <p class="review-body">Review body</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">Reviewer name</div>
+                        <div class="reviewer-date">Date</div>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required placeholder="Which products are you interested in?"></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 YourStore. All rights reserved. | Made in Georgia 🇬🇪</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">🏛</div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">X</a>
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">YT</a>
+                        <a href="#" class="social-link">IN</a>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-column">
+                        <h4>საშნელი</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">დალაინებები მოძიებისა</a></li>
+                            <li><a href="#">ეს ა ფუნქციონი</a></li>
+                            <li><a href="#">ქორობრია და რრა</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>დამატი</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Value</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <button class="subscribe-btn">გამოწერა</button>
+            </div>
         </div>
     </footer>
-
-    <div class="fab" onclick="scrollToTop()">↑</div>
-
-    <script>
-        // Sample product data - Replace with your actual products
-        const products = [
-            {
-                name: "Premium Product 1",
-                description: "High-quality product with excellent features and premium materials.",
-                price: "₾299",
-                image: "00"
-            },
-            {
-                name: "Luxury Item 2",
-                description: "Elegant design meets functionality in this exclusive product.",
-                price: "₾449",
-                image: "✨"
-            },
-            {
-                name: "Essential Product 3",
-                description: "Everything you need in one perfect package for daily use.",
-                price: "₾199",
-                image: "🎯"
-            },
-            {
-                name: "Professional Tool 4",
-                description: "Professional-grade quality for demanding applications.",
-                price: "₾599",
-                image: "🔧"
-            },
-            {
-                name: "Smart Device 5",
-                description: "Latest technology with intelligent features and connectivity.",
-                price: "₾799",
-                image: "📱"
-            },
-            {
-                name: "Comfort Series 6",
-                description: "Designed for ultimate comfort and long-lasting durability.",
-                price: "₾349",
-                image: "🛋️"
-            },
-            {
-                name: "Eco-Friendly 7",
-                description: "Sustainable choice with minimal environmental impact.",
-                price: "₾259",
-                image: "🌱"
-            },
-            {
-                name: "Limited Edition 8",
-                description: "Exclusive limited edition with unique design elements.",
-                price: "₾899",
-                image: "💎"
-            },
-            {
-                name: "Family Pack 9",
-                description: "Perfect for families with multiple usage scenarios.",
-                price: "₾399",
-                image: "👨‍👩‍👧‍👦"
-            },
-            {
-                name: "Travel Companion 10",
-                description: "Compact and portable for your travel adventures.",
-                price: "₾179",
-                image: "🧳"
-            },
-            {
-                name: "Tech Innovation 11",
-                description: "Cutting-edge technology with advanced features.",
-                price: "₾699",
-                image: "🚀"
-            },
-            {
-                name: "Artisan Craft 12",
-                description: "Handcrafted with attention to detail and quality.",
-                price: "₾549",
-                image: "🎨"
-            },
-            {
-                name: "Fitness Essential 13",
-                description: "Perfect companion for your fitness and wellness journey.",
-                price: "₾229",
-                image: "💪"
-            },
-            {
-                name: "Home Luxury 14",
-                description: "Elevate your home with this premium addition.",
-                price: "₾649",
-                image: "🏠"
-            },
-            {
-                name: "Student Special 15",
-                description: "Designed specifically for students and learning.",
-                price: "₾149",
-                image: "📚"
-            },
-            {
-                name: "Business Pro 16",
-                description: "Professional solution for business and office use.",
-                price: "₾749",
-                image: "💼"
-            },
-            {
-                name: "Creative Tool 17",
-                description: "Unleash your creativity with this innovative product.",
-                price: "₾459",
-                image: "🎭"
-            },
-            {
-                name: "Outdoor Adventure 18",
-                description: "Built tough for outdoor enthusiasts and adventurers.",
-                price: "₾379",
-                image: "🏔️"
-            },
-            {
-                name: "Premium Care 19",
-                description: "Gentle care with premium ingredients and materials.",
-                price: "₾289",
-                image: "🌸"
-            },
-            {
-                name: "Ultimate Bundle 20",
-                description: "Complete package with everything you need and more.",
-                price: "₾999",
-                image: "🎁"
-            }
-        ];
-
-        // Generate product cards
-        function generateProducts() {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = products.map(product => `
-                <div class="product-card">
-                    <div class="product-image">${product.image}</div>
-                    <div class="product-info">
-                        <h3 class="product-name">${product.name}</h3>
-                        <p class="product-description">${product.description}</p>
-                        <div class="product-price">${product.price}</div>
-                        <button class="product-button" onclick="contactAboutProduct('${product.name}')">
-                            Contact for Details
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Contact about specific product
-        function contactAboutProduct(productName) {
-            const message = `I'm interested in ${productName}. Please provide more details.`;
-            const whatsappUrl = `https://wa.me/995555123456?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        // Handle form submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // For now, just show an alert. In production, you'd send this to a server
-            alert(`Thank you ${data.name}! We'll get back to you soon.`);
-            
-            // You can integrate with services like:
-            // - Netlify Forms (add data-netlify="true" to form)
-            // - Formspree (change action to formspree endpoint)
-            // - EmailJS for client-side email sending
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Initialize products on page load
-        document.addEventListener('DOMContentLoaded', generateProducts);
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    </script>
 </body>
 </html>
