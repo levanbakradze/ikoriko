@@ -68,3 +68,14 @@
 .active-dot {
   background-color: #fff;
 }
+
+
+.large-products,
+.large-product-card {
+    display: none !important;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
