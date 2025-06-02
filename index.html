@@ -251,7 +251,51 @@
 
         
 
-<!-- here was large product part-->
+<!-- Main Content with Carousel -->
+    <main class="main-content">
+        <div class="carousel-container">
+            <!-- Carousel Slide 1 -->
+            <div class="carousel-slide active">
+                <div class="carousel-content">
+                    <div class="text-section">
+                        <h2>პირველი სლაიდი</h2>
+                        <p>ეს არის პირველი სლაიდის აღწერა</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Slide 2 -->
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="text-section">
+                        <h2>მეორე სლაიდი</h2>
+                        <p>ეს არის მეორე სლაიდის აღწერა</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Slide 3 -->
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="text-section">
+                        <h2>მესამე სლაიდი</h2>
+                        <p>ეს არის მესამე სლაიდის აღწერა</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation arrows -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+            <!-- Dots indicator -->
+            <div class="carousel-dots">
+                <span class="dot active-dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </main>
 
         } 
 
