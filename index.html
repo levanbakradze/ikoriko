@@ -786,7 +786,39 @@
                 
             <!-- <button class="subscribe-btn">გამოწერა</button> -->
             <button class="subscribe-btn" onclick="window.open('https://wa.me/+995577627547', '_blank')">WhatsApp Contact</button>  
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll(".carousel-slide");
+const dots = document.querySelectorAll(".dot");
 
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        dots[i].classList.remove("active-dot");
+        if (i === index) {
+            slide.classList.add("active");
+            dots[i].classList.add("active-dot");
+        }
+    });
+}
+
+function changeSlide(n) {
+    slideIndex += n;
+    if (slideIndex >= slides.length) slideIndex = 0;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    showSlide(slideIndex);
+}
+
+function currentSlide(n) {
+    slideIndex = n - 1;
+    showSlide(slideIndex);
+}
+
+// Optional: Auto-slide
+setInterval(() => {
+    changeSlide(1);
+}, 5000);
+</script>
                 
             </div>
         </div>
