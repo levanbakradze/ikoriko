@@ -23,8 +23,6 @@
             background-color: white;
             padding: 15px 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            
-            
         }
 
         .header-container {
@@ -58,8 +56,6 @@
         .search-section {
             background-color: white;
             padding: 20px 0;
-             
-             
         }
 
         .search-container {
@@ -75,8 +71,6 @@
             flex: 1;
             max-width: 400px;
             position: relative;
-             
-            
         }
 
         .search-box input {
@@ -121,19 +115,112 @@
             color: #333;
         }
 
-        /* Main Content Section */
-        .main-content {
-    max-width: 1200px;
-    margin: 50px auto; /* Changed from 30px to 50px for more distance from search */
-    padding: 0 20px;
-}
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 80%;
+            max-width: 1000px;
+            margin: 40px auto;
+            overflow: hidden;
+            background: linear-gradient(135deg, #a56beb, #9c5ce8);
+            border-radius: 15px;
+            padding: 40px 20px;
+            color: white;
+            font-family: sans-serif;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-       .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; /* Increased from 20px to 25px for better spacing between cards */
-    margin-bottom: 40px;
+        .carousel-slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .carousel-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .text-section h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .text-section p {
+            font-size: 18px;
+            color: #ffe066;
+            line-height: 1.6;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(255,255,255,0.9);
+            color: #333;
+            border: none;
+            font-size: 18px;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .prev:hover, .next:hover {
+            background-color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 6px;
+            background-color: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot:hover {
+            background-color: rgba(255,255,255,0.7);
+        }
+
+        .active-dot {
+            background-color: #fff;
+            transform: scale(1.2);
+        }
+
+        /* Main Content Section */
+        .main-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
         .product-card {
@@ -141,6 +228,17 @@
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-card a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .product-image {
@@ -148,9 +246,8 @@
             height: 200px;
             border-radius: 5px;
             margin-bottom: 15px;
-            object-fit: cover;  /* დამატებული ხაზი  */
-            display: block;     /* დამატებული ხაზი */
-
+            object-fit: cover;
+            display: block;
         }
 
         .product-title {
@@ -166,149 +263,11 @@
             color: #333;
         }
 
-        }
-
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            background: #a56beb;
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
-            font-family: sans-serif;
-        }
-
-        .carousel-slide {
-            display: none;
-        }
-
-        .carousel-slide.active {
-            display: block;
-        }
-
-        .carousel-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .text-section h2 {
-            font-size: 28px;
-            margin: 0;
-        }
-
-        .text-section p {
-            font-size: 20px;
-            color: yellow;
-        }
-
-        .prev, .next {
-            position: absolute;
-            top: 45%;
-            background-color: white;
-            color: black;
-            border: none;
-            font-size: 22px;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-            transform: translateY(-50%);
-        }
-
-        .prev { left: 10px; }
-        .next { right: 10px; }
-
-        .carousel-dots {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        .dot {
-            height: 12px;
-            width: 12px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .active-dot {
-            background-color: #fff;
-        }
-
-        .large-products,
-        .large-product-card {
-            display: none !important;
-            visibility: hidden;
-            height: 0;
-            width: 0;
-            overflow: hidden;
-        }
-
-        
-
-<!-- Main Content with Carousel -->
-    <main class="main-content">
-        <div class="carousel-container">
-            <!-- Carousel Slide 1 -->
-            <div class="carousel-slide active">
-                <div class="carousel-content">
-                    <div class="text-section">
-                        <h2>პირველი სლაიდი</h2>
-                        <p>ეს არის პირველი სლაიდის აღწერა</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel Slide 2 -->
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="text-section">
-                        <h2>მეორე სლაიდი</h2>
-                        <p>ეს არის მეორე სლაიდის აღწერა</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Carousel Slide 3 -->
-            <div class="carousel-slide">
-                <div class="carousel-content">
-                    <div class="text-section">
-                        <h2>მესამე სლაიდი</h2>
-                        <p>ეს არის მესამე სლაიდის აღწერა</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation arrows -->
-            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-            <button class="next" onclick="changeSlide(1)">&#10095;</button>
-
-            <!-- Dots indicator -->
-            <div class="carousel-dots">
-                <span class="dot active-dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
-        </div>
-    </main>
-
-        } 
-
-       
-
         /* Reviews Section */
-
-
-.reviews-section {
-    max-width: 1200px;
-    margin: 60px auto 60px auto; /* Increased top margin from 30px to 60px */
-    padding: 50px 20px;
-
+        .reviews-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 50px 20px;
         }
 
         .reviews-title {
@@ -354,7 +313,7 @@
             color: #333;
         }
 
-        .review- {
+        .review-body {
             font-size: 14px;
             color: #666;
             line-height: 1.5;
@@ -393,7 +352,7 @@
             background-color: white;
             border-top: 1px solid #eee;
             padding: 40px 0;
-            margin: 30px auto 60px auto
+            margin-top: 60px;
         }
 
         .footer-container {
@@ -436,6 +395,12 @@
             justify-content: center;
             text-decoration: none;
             color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #333;
+            color: white;
         }
 
         .footer-right {
@@ -484,69 +449,61 @@
             font-size: 14px;
             margin-top: 20px;
             width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background-color: #1ea952;
         }
 
         /* Responsive Design */
-       
-        .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Consistent with other sections */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-          }
-
-         .header-container,
-    .search-container,
-    .footer-container {
-        padding: 0 15px; /* Consistent mobile padding */
-    }
-    
-    .reviews-section {
-        margin: 40px auto 40px auto; /* Smaller margins on mobile */
-        padding: 30px 15px; /* Less padding on mobile */
-    }
-    
-    .products-grid {
-        gap: 20px; /* Slightly smaller gap on mobile */
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-        }
         @media (max-width: 768px) {
-    .main-content {
-        margin: 30px auto; /* Smaller margin on mobile */
-        padding: 0 15px; 
-                
+            .header-container,
+            .search-container,
+            .footer-container {
+                padding: 0 15px;
+            }
+            
+            .main-content {
+                margin: 30px auto;
+                padding: 0 15px;
             }
 
-            .search-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Consistent with other sections */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+            .carousel-container {
+                width: 95%;
+                margin: 30px auto;
+                padding: 30px 15px;
             }
 
+            .text-section h2 {
+                font-size: 24px;
+            }
+
+            .text-section p {
+                font-size: 16px;
+            }
+
+            .prev, .next {
+                padding: 10px 12px;
+                font-size: 16px;
+            }
+
+            .prev { left: 10px; }
+            .next { right: 10px; }
+            
+            .reviews-section {
+                margin: 40px auto;
+                padding: 30px 15px;
+            }
+            
             .products-grid {
+                gap: 20px;
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
-
-
-}
-
-/* Footer Container - Consistent side margins */
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px; /* Consistent with other sections */
-}
-                
             }
 
             .nav-links {
@@ -566,11 +523,7 @@
                 <ul class="nav-links">
                     <li><a href="#">კოლექციები</a></li>
                     <li><a href="#">ჩვენი ნაშრომები</a></li>
-                    
-                    <!-- <li><a href="#">კონტაქტი</a></li-->
-                  
                     <li><a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a></li>
-                    
                 </ul>
             </nav>
         </div>
@@ -591,94 +544,92 @@
         </div>
     </section>
 
+    <!-- Carousel Section -->
+    <div class="carousel-container">
+        <!-- Carousel Slide 1 -->
+        <div class="carousel-slide active">
+            <div class="carousel-content">
+                <div class="text-section">
+                    <h2>პირველი სლაიდი</h2>
+                    <p>ეს არის პირველი სლაიდის აღწერა - ჩვენი ხელნაკეთი დანადგარები უნიკალური და ხარისხიანია</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Slide 2 -->
+        <div class="carousel-slide">
+            <div class="carousel-content">
+                <div class="text-section">
+                    <h2>მეორე სლაიდი</h2>
+                    <p>ეს არის მეორე სლაიდის აღწერა - ყველა პროდუქტი დამზადებულია ტრადიციული მეთოდებით</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Slide 3 -->
+        <div class="carousel-slide">
+            <div class="carousel-content">
+                <div class="text-section">
+                    <h2>მესამე სლაიდი</h2>
+                    <p>ეს არის მესამე სლაიდის აღწერა - ჩვენ გთავაზობთ საუკეთესო ხარისხის პროდუქციას</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation arrows -->
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+
+        <!-- Dots indicator -->
+        <div class="carousel-dots">
+            <span class="dot active-dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+
     <!-- Main Content -->
-  <!-- Main Content -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product Page</title>
-    <style>
-        /* Aggressive CSS to remove large products */
-        .large-products,
-        .large-product-card,
-        [class*="large-product"] {
-            display: none !important;
-            position: absolute !important;
-            top: -9999px !important;
-            left: -9999px !important;
-            width: 0 !important;
-            height: 0 !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            overflow: hidden !important;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .product-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .product-image {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-<body>
-       <!-- Main Content -->
-    
-<div class="products-grid">
-    <div class="product-card">
-        <a href="products/product-1.html">
-            <img src="https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-            <h3 class="product-title">წოლჭიმის დანადგარი</h3>
-            <p class="product-price">₾350</p>
-        </a>
-    </div>
-    
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-        <h3 class="product-title">მკლავჭიდის მაგიდა</h3>
-        <p class="product-price">₾157</p>
-    </div>
-    
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-        <h3 class="product-title">მკლავჭიდის სახელური</h3>
-        <p class="product-price">₾360</p>
-    </div>
-    
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-        <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
-        <p class="product-price">₾200</p>
-    </div>
-    
-    <!-- These two were outside the grid - now moved inside -->
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-        <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
-        <p class="product-price">₾200</p>
-    </div>
-    
-    <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-        <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
-        <p class="product-price">₾200</p>
-    </div>
-</div>
-
-
-              
-
+    <main class="main-content">
+        <div class="products-grid">
+            <div class="product-card">
+                <a href="products/product-1.html">
+                    <img src="https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                    <h3 class="product-title">წოლჭიმის დანადგარი</h3>
+                    <p class="product-price">₾350</p>
+                </a>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">მკლავჭიდის მაგიდა</h3>
+                <p class="product-price">₾157</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">მკლავჭიდის სახელური</h3>
+                <p class="product-price">₾360</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
+                <p class="product-price">₾200</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
+                <p class="product-price">₾200</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
+                <p class="product-price">₾200</p>
+            </div>
+        </div>
+    </main>
 
     <!-- Reviews Section -->
     <section class="reviews-section">
@@ -692,13 +643,13 @@
                     <span class="star filled">★</span>
                     <span class="star filled">★</span>
                 </div>
-                <h3 class="review-title">Review title</h3>
-                <p class="review-body">Review body</p>
+                <h3 class="review-title">შესანიშნავი ხარისხი</h3>
+                <p class="review-body">ძალიან კმაყოფილი ვარ შეძენილი პროდუქტით. ხარისხი მაღალია და მუშაობა შესანიშნავია.</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar"></div>
                     <div class="reviewer-info">
-                        <div class="reviewer-name">Reviewer name</div>
-                        <div class="reviewer-date">Date</div>
+                        <div class="reviewer-name">გიორგი მელაძე</div>
+                        <div class="reviewer-date">15 მაისი 2024</div>
                     </div>
                 </div>
             </div>
@@ -710,13 +661,13 @@
                     <span class="star filled">★</span>
                     <span class="star filled">★</span>
                 </div>
-                <h3 class="review-title">Review title</h3>
-                <p class="review-body">Review body</p>
+                <h3 class="review-title">რეკომენდირებული</h3>
+                <p class="review-body">მუშაობის ხარისხი ძალიან კარგია, სწრაფი მიწოდება და მომსახურება პროფესიონალურია.</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar"></div>
                     <div class="reviewer-info">
-                        <div class="reviewer-name">Reviewer name</div>
-                        <div class="reviewer-date">Date</div>
+                        <div class="reviewer-name">ნინო ღუდუშაური</div>
+                        <div class="reviewer-date">3 ივნისი 2024</div>
                     </div>
                 </div>
             </div>
@@ -728,13 +679,13 @@
                     <span class="star filled">★</span>
                     <span class="star filled">★</span>
                 </div>
-                <h3 class="review-title">Review title</h3>
-                <p class="review-body">Review body</p>
+                <h3 class="review-title">მაღალი ხარისხი</h3>
+                <p class="review-body">ღირებულება და ხარისხი იდეალურად ერთმანეთს ებრძოლება. კმაყოფილი ვარ შეძენით.</p>
                 <div class="reviewer">
                     <div class="reviewer-avatar"></div>
                     <div class="reviewer-info">
-                        <div class="reviewer-name">Reviewer name</div>
-                        <div class="reviewer-date">Date</div>
+                        <div class="reviewer-name">დავით კოპალაძე</div>
+                        <div class="reviewer-date">28 აპრილი 2024</div>
                     </div>
                 </div>
             </div>
@@ -747,23 +698,13 @@
             <div class="footer-content">
                 <div class="footer-left">
                     <div class="footer-logo">🏛</div>
-                    
-                    
-                    <!--<div class="social-links">
-                        <a href="#" class="social-link">X</a>
-                        <a href="#" class="social-link">IG</a>
-                        <a href="#" class="social-link">YT</a>
-                        <a href="#" class="social-link">IN</a>
-                    </div>-->
-
-<div class="social-links">
-    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-    <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-</div>
-                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
                 <div class="footer-right">
                     <div class="footer-column">
@@ -783,58 +724,57 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                
-            <!-- <button class="subscribe-btn">გამოწერა</button> -->
-            <button class="subscribe-btn" onclick="window.open('https://wa.me/+995577627547', '_blank')">WhatsApp Contact</button>  
-
-                
+                <button class="subscribe-btn" onclick="window.open('https://wa.me/+995577627547', '_blank')">WhatsApp Contact</button>  
             </div>
         </div>
     </footer>
+
     <script>
-    // Carousel JavaScript
-    let slideIndex = 1;
-    showSlides(slideIndex);
+        // Carousel JavaScript
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-    function changeSlide(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        let slides = document.getElementsByClassName("carousel-slide");
-        let dots = document.getElementsByClassName("dot");
-        
-        // Wrap around logic for slides
-        if (n > slides.length) {
-            slideIndex = 1;
-        }
-        if (n < 1) {
-            slideIndex = slides.length;
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
         }
 
-        // Hide all slides
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].classList.remove("active");
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
         }
 
-        // Remove active dot
-        for (let i = 0; i < dots.length; i++) {
-            dots[i].classList.remove("active-dot");
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            // Wrap around logic for slides
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+
+            // Remove active dot
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active-dot");
+            }
+
+            // Show current slide and mark current dot
+            if (slides.length > 0 && slideIndex <= slides.length) {
+                slides[slideIndex - 1].classList.add("active");
+                dots[slideIndex - 1].classList.add("active-dot");
+            }
         }
 
-        // Show current slide and mark current dot
-        slides[slideIndex - 1].classList.add("active");
-        dots[slideIndex - 1].classList.add("active-dot");
-    }
-
-    // Optional: Auto-slide functionality
-    setInterval(() => {
-        changeSlide(1);
-    }, 5000); // Change slide every 5 seconds
-</script>
+        // Optional: Auto-slide functionality
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000); // Change slide every 5 seconds
+    </script>
 </body>
 </html>
