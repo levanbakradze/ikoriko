@@ -79,3 +79,68 @@
     overflow: hidden;
 }
 
+.product-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Add mobile responsive styles */
+@media (max-width: 768px) {
+    .main-content {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    
+    .header-container,
+    .search-container,
+    .footer-container {
+        padding: 0 15px;
+    }
+    
+    .reviews-section {
+        margin: 40px auto 40px auto;
+        padding: 30px 15px;
+    }
+    
+    .products-grid {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    /* Mobile specific image adjustments */
+    .product-image {
+        height: 180px; /* Slightly smaller height on mobile */
+    }
+    
+    .product-card {
+        padding: 15px; /* Less padding on mobile for better space usage */
+    }
+    
+    .product-title {
+        font-size: 15px; /* Slightly smaller text on mobile */
+    }
+    
+    .product-price {
+        font-size: 16px; /* Adjust price font size for mobile */
+    }
+}
+
+/* For very small screens (phones) */
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .product-image {
+        height: 150px; /* Even smaller on very small screens */
+    }
+    
+    .main-content {
+        padding: 0 10px; /* Less padding on very small screens */
+    }
+}
