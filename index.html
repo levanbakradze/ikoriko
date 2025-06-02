@@ -166,7 +166,88 @@
             color: #333;
         }
 
+        }
 
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            background: #a56beb;
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        .carousel-slide {
+            display: none;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text-section h2 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .text-section p {
+            font-size: 20px;
+            color: yellow;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 45%;
+            background-color: white;
+            color: black;
+            border: none;
+            font-size: 22px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        .carousel-dots {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .active-dot {
+            background-color: #fff;
+        }
+
+        .large-products,
+        .large-product-card {
+            display: none !important;
+            visibility: hidden;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+        }
 
         
 
