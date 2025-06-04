@@ -115,6 +115,97 @@
             color: #333;
         }
 
+      /* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 80%; /* Adjust overall width */
+    max-width: 1000px; /* Maximum width */
+    height: 180px; /* Fixed height - adjust as needed */
+    margin: 40px auto;
+    overflow: hidden;
+    background: linear-gradient(135deg, #a56beb, #9c5ce8);
+    border-radius: 15px;
+    padding: 0; /* Remove padding */
+    color: white;
+    font-family: sans-serif;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.carousel-slide {
+    background-size: cover; /* Ensures image covers entire area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image repetition */
+}
+
+        /* Main Content Section */
+        .main-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
         /* Navigation Arrows */
 .prev, .next {
     position: absolute;
@@ -459,50 +550,6 @@
         </div>
     </section>
 
-    <!-- Carousel Section -->
-    <div class="carousel-container">
-        <!-- Carousel Slide 1 -->
-        <div class="carousel-slide active">
-            <div class="carousel-content">
-                <div class="text-section">
-                    <h2>პირველი სლაიდი</h2>
-                    <p>ეს არის პირველი სლაიდის აღწერა - ჩვენი ხელნაკეთი დანადგარები უნიკალური და ხარისხიანია</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Carousel Slide 2 -->
-        <div class="carousel-slide">
-            <div class="carousel-content">
-                <div class="text-section">
-                    <h2>მეორე სლაიდი</h2>
-                    <p>ეს არის მეორე სლაიდის აღწერა - ყველა პროდუქტი დამზადებულია ტრადიციული მეთოდებით</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Carousel Slide 3 -->
-        <div class="carousel-slide">
-            <div class="carousel-content">
-                <div class="text-section">
-                    <h2>მესამე სლაიდი</h2>
-                    <p>ეს არის მესამე სლაიდის აღწერა - ჩვენ გთავაზობთ საუკეთესო ხარისხის პროდუქციას</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navigation arrows -->
-        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="next" onclick="changeSlide(1)">&#10095;</button>
-
-        <!-- Dots indicator -->
-        <div class="carousel-dots">
-            <span class="dot active-dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-    </div>
-
 <!-- Carousel Section -->
 <div class="carousel-container">
     <!-- Carousel Slide 1 -->
@@ -537,6 +584,49 @@
         <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="products-grid">
+            <div class="product-card">
+                <a href="products/product-1.html">
+                    <img src="https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                    <h3 class="product-title">წოლჭიმის დანადგარი</h3>
+                    <p class="product-price">₾350</p>
+                </a>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">მკლავჭიდის მაგიდა</h3>
+                <p class="product-price">₾157</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">მკლავჭიდის სახელური</h3>
+                <p class="product-price">₾360</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
+                <p class="product-price">₾200</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
+                <p class="product-price">₾200</p>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
+                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
+                <p class="product-price">₾200</p>
+            </div>
+        </div>
+    </main>
 
     <!-- Reviews Section -->
     <section class="reviews-section">
