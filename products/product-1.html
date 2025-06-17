@@ -869,12 +869,15 @@
         </div>
     </section>
 
+ <!-- additional script for image -->
 
-
-    <script>
+   <script>
     document.addEventListener('DOMContentLoaded', function() {
         const mainImage = document.querySelector('.product-main-image');
         const thumbnails = document.querySelectorAll('.thumbnail');
+        
+        // Array mit Bild-URLs für Vergrößerungsfunktion
+        const imageUrls = Array.from(thumbnails).map(thumb => thumb.src);
         
         // Thumbnail Klick-Ereignis
         thumbnails.forEach(thumbnail => {
@@ -892,6 +895,10 @@
 
         // Bild Vergrößerungsfunktion
         mainImage.addEventListener('click', function() {
+            createImageModal(this.src);
+        });
+
+        function createImageModal(initialSrc) {
             // Modal für vergrößertes Bild erstellen
             const modal = document.createElement('div');
             modal.style.position = 'fixed';
@@ -899,35 +906,107 @@
             modal.style.left = '0';
             modal.style.width = '100%';
             modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            modal.style.backgroundColor = 'rgba(255,255,255,0.95)';
             modal.style.display = 'flex';
             modal.style.justifyContent = 'center';
             modal.style.alignItems = 'center';
             modal.style.zIndex = '1000';
+            modal.style.flexDirection = 'column';
+
+            const imageContainer = document.createElement('div');
+            imageContainer.style.display = 'flex';
+            imageContainer.style.alignItems = 'center';
+            imageContainer.style.justifyContent = 'center';
+            imageContainer.style.width = '100%';
+            imageContainer.style.maxWidth = '90%';
+            imageContainer.style.position = 'relative';
 
             const enlargedImage = document.createElement('img');
-            enlargedImage.src = this.src;
+            enlargedImage.src = initialSrc;
             enlargedImage.style.maxWidth = '90%';
-            enlargedImage.style.maxHeight = '90%';
+            enlargedImage.style.maxHeight = '80vh';
             enlargedImage.style.objectFit = 'contain';
 
+            // Navigations-Buttons
+            const prevButton = document.createElement('button');
+            prevButton.innerHTML = '◀';
+            prevButton.style.position = 'absolute';
+            prevButton.style.left = '10px';
+            prevButton.style.background = 'rgba(0,0,0,0.1)';
+            prevButton.style.border = 'none';
+            prevButton.style.borderRadius = '50%';
+            prevButton.style.width = '50px';
+            prevButton.style.height = '50px';
+            prevButton.style.fontSize = '24px';
+            prevButton.style.cursor = 'pointer';
+
+            const nextButton = document.createElement('button');
+            nextButton.innerHTML = '▶';
+            nextButton.style.position = 'absolute';
+            nextButton.style.right = '10px';
+            nextButton.style.background = 'rgba(0,0,0,0.1)';
+            nextButton.style.border = 'none';
+            nextButton.style.borderRadius = '50%';
+            nextButton.style.width = '50px';
+            nextButton.style.height = '50px';
+            nextButton.style.fontSize = '24px';
+            nextButton.style.cursor = 'pointer';
+
+            // Schließen-Button
             const closeButton = document.createElement('button');
             closeButton.innerHTML = '✖';
             closeButton.style.position = 'absolute';
-            closeButton.style.top = '20px';
-            closeButton.style.right = '20px';
-            closeButton.style.background = 'white';
+            closeButton.style.top = '-50px';
+            closeButton.style.right = '0';
+            closeButton.style.background = 'none';
             closeButton.style.border = 'none';
-            closeButton.style.fontSize = '24px';
+            closeButton.style.fontSize = '36px';
             closeButton.style.cursor = 'pointer';
+            closeButton.style.color = '#333';
+
+            // Bildnavigation
+            let currentIndex = imageUrls.indexOf(initialSrc);
+
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
+                enlargedImage.src = imageUrls[currentIndex];
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageUrls.length;
+                enlargedImage.src = imageUrls[currentIndex];
+            });
 
             closeButton.addEventListener('click', () => {
                 document.body.removeChild(modal);
             });
 
-            modal.appendChild(enlargedImage);
+            // Tastaturnavigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    prevButton.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextButton.click();
+                } else if (e.key === 'Escape') {
+                    closeButton.click();
+                }
+            });
+
+            imageContainer.appendChild(prevButton);
+            imageContainer.appendChild(enlargedImage);
+            imageContainer.appendChild(nextButton);
+
             modal.appendChild(closeButton);
+            modal.appendChild(imageContainer);
+
             document.body.appendChild(modal);
+        }
+
+        // Thumbnail Vergrößerungsfunktion
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                createImageModal(this.src);
+            });
         });
     });
 
@@ -942,6 +1021,7 @@
         }
     }
 </script>
+
 
     <!-- Footer -->
     <footer class="footer">
