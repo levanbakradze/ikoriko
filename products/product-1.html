@@ -947,28 +947,7 @@
                 padding: 10px 0;
             `;
 
-            // Schließen-Funktion
-function closeModal() {
-    document.body.removeChild(modal);
-}
-
-// Schließen-Ereignisse
-closeButton.addEventListener('click', closeModal);
-modal.addEventListener('click', (e) => {
-    // Schließen, wenn auf den weißen Bereich geklickt wird
-    if (e.target === modal) {
-        closeModal();
-    }
-});
-
-// Tastaturnavigation
-document.addEventListener('keydown', function(e) {
-    if (modal.parentElement) {
-        if (e.key === 'ArrowLeft') prevButton.click();
-        if (e.key === 'ArrowRight') nextButton.click();
-        if (e.key === 'Escape') closeModal();
-    }
-});
+         
 
             // Dynamische Thumbnails erstellen
             imageUrls.forEach(url => {
@@ -1100,6 +1079,29 @@ document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape') closeModal();
                 }
             });
+
+            // Schließen-Funktion
+function closeModal() {
+    document.body.removeChild(modal);
+}
+
+// Schließen-Ereignisse
+closeButton.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => {
+    // Schließen, wenn auf den weißen Bereich geklickt wird
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Tastaturnavigation
+document.addEventListener('keydown', function(e) {
+    if (modal.parentElement) {
+        if (e.key === 'ArrowLeft') prevButton.click();
+        if (e.key === 'ArrowRight') nextButton.click();
+        if (e.key === 'Escape') closeModal();
+    }
+});
 
             // Elemente zusammenfügen
             navContainer.appendChild(prevButton);
