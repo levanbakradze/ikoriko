@@ -870,13 +870,11 @@
     </section>
 
  <!-- additional script for image -->
-
-   <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const mainImage = document.querySelector('.product-main-image');
         const thumbnails = document.querySelectorAll('.thumbnail');
         
-        // Array mit Bild-URLs für Vergrößerungsfunktion
         const imageUrls = Array.from(thumbnails).map(thumb => thumb.src);
         
         function createImageModal(initialSrc) {
@@ -896,6 +894,7 @@
                 z-index: 1000;
                 padding: 20px;
                 box-sizing: border-box;
+                cursor: pointer; // Cursor für Schließen
             `;
 
             // Schließen-Button
@@ -922,6 +921,7 @@
                 width: 100%;
                 max-width: 100%;
                 position: relative;
+                pointer-events: none; // Verhindert Interferenz mit Modal-Schließen
             `;
 
             // Vergrößertes Hauptbild
@@ -932,6 +932,7 @@
                 max-height: 70vh;
                 object-fit: contain;
                 margin-bottom: 20px;
+                pointer-events: auto; // Bild klickbar
             `;
 
             // Thumbnail-Container
@@ -943,6 +944,7 @@
                 width: 100%;
                 overflow-x: auto;
                 padding: 10px 0;
+                pointer-events: auto; // Thumbnails klickbar
             `;
 
             // Dynamische Thumbnails erstellen
@@ -958,7 +960,8 @@
                     border: 2px solid ${url === initialSrc ? '#7c3aed' : 'transparent'};
                 `;
 
-                thumb.addEventListener('click', () => {
+                thumb.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Verhindert Schließen beim Thumbnail-Klick
                     enlargedImage.src = url;
                     
                     // Aktive Thumbnail-Markierung aktualisieren
@@ -982,42 +985,49 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
+                pointer-events: none;
             `;
 
             const prevButton = document.createElement('button');
             prevButton.innerHTML = '◀';
             prevButton.style.cssText = `
-                background: rgba(0,0,0,0.1);
+                background: white;
                 border: none;
                 border-radius: 50%;
                 width: 50px;
                 height: 50px;
                 font-size: 24px;
                 cursor: pointer;
+                pointer-events: auto;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             `;
 
             const nextButton = document.createElement('button');
             nextButton.innerHTML = '▶';
             nextButton.style.cssText = `
-                background: rgba(0,0,0,0.1);
+                background: white;
                 border: none;
                 border-radius: 50%;
                 width: 50px;
                 height: 50px;
                 font-size: 24px;
                 cursor: pointer;
+                pointer-events: auto;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             `;
 
             // Bildnavigation
             let currentIndex = imageUrls.indexOf(initialSrc);
 
-            prevButton.addEventListener('click', () => {
+            prevButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Verhindert Schließen beim Buttonklick
                 currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
                 enlargedImage.src = imageUrls[currentIndex];
                 updateThumbnailHighlight();
             });
 
-            nextButton.addEventListener('click', () => {
+            nextButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // Verhindert Schließen beim Buttonklick
                 currentIndex = (currentIndex + 1) % imageUrls.length;
                 enlargedImage.src = imageUrls[currentIndex];
                 updateThumbnailHighlight();
@@ -1032,9 +1042,18 @@
                 });
             }
 
-            // Schließen-Ereignisse
-            closeButton.addEventListener('click', () => {
+            // Schließen-Funktion
+            function closeModal() {
                 document.body.removeChild(modal);
+            }
+
+            // Schließen-Ereignisse
+            closeButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                // Schließen, wenn auf den weißen Bereich geklickt wird
+                if (e.target === modal) {
+                    closeModal();
+                }
             });
 
             // Tastaturnavigation
@@ -1042,7 +1061,7 @@
                 if (modal.parentElement) {
                     if (e.key === 'ArrowLeft') prevButton.click();
                     if (e.key === 'ArrowRight') nextButton.click();
-                    if (e.key === 'Escape') closeButton.click();
+                    if (e.key === 'Escape') closeModal();
                 }
             });
 
@@ -1093,6 +1112,7 @@
         }
     }
 </script>
+
 
 
     <!-- Footer -->
