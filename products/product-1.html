@@ -879,90 +879,134 @@
         // Array mit Bild-URLs für Vergrößerungsfunktion
         const imageUrls = Array.from(thumbnails).map(thumb => thumb.src);
         
-        // Thumbnail Klick-Ereignis
-        thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
-                // Aktive Klasse von allen Thumbnails entfernen
-                thumbnails.forEach(t => t.classList.remove('active'));
-                
-                // Aktive Klasse zum geklickten Thumbnail hinzufügen
-                this.classList.add('active');
-                
-                // Hauptbild aktualisieren
-                mainImage.src = this.src;
-            });
-        });
-
-        // Bild Vergrößerungsfunktion
-        mainImage.addEventListener('click', function() {
-            createImageModal(this.src);
-        });
-
         function createImageModal(initialSrc) {
             // Modal für vergrößertes Bild erstellen
             const modal = document.createElement('div');
-            modal.style.position = 'fixed';
-            modal.style.top = '0';
-            modal.style.left = '0';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(255,255,255,0.95)';
-            modal.style.display = 'flex';
-            modal.style.justifyContent = 'center';
-            modal.style.alignItems = 'center';
-            modal.style.zIndex = '1000';
-            modal.style.flexDirection = 'column';
-
-            const imageContainer = document.createElement('div');
-            imageContainer.style.display = 'flex';
-            imageContainer.style.alignItems = 'center';
-            imageContainer.style.justifyContent = 'center';
-            imageContainer.style.width = '100%';
-            imageContainer.style.maxWidth = '90%';
-            imageContainer.style.position = 'relative';
-
-            const enlargedImage = document.createElement('img');
-            enlargedImage.src = initialSrc;
-            enlargedImage.style.maxWidth = '90%';
-            enlargedImage.style.maxHeight = '80vh';
-            enlargedImage.style.objectFit = 'contain';
-
-            // Navigations-Buttons
-            const prevButton = document.createElement('button');
-            prevButton.innerHTML = '◀';
-            prevButton.style.position = 'absolute';
-            prevButton.style.left = '10px';
-            prevButton.style.background = 'rgba(0,0,0,0.1)';
-            prevButton.style.border = 'none';
-            prevButton.style.borderRadius = '50%';
-            prevButton.style.width = '50px';
-            prevButton.style.height = '50px';
-            prevButton.style.fontSize = '24px';
-            prevButton.style.cursor = 'pointer';
-
-            const nextButton = document.createElement('button');
-            nextButton.innerHTML = '▶';
-            nextButton.style.position = 'absolute';
-            nextButton.style.right = '10px';
-            nextButton.style.background = 'rgba(0,0,0,0.1)';
-            nextButton.style.border = 'none';
-            nextButton.style.borderRadius = '50%';
-            nextButton.style.width = '50px';
-            nextButton.style.height = '50px';
-            nextButton.style.fontSize = '24px';
-            nextButton.style.cursor = 'pointer';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255,255,255,0.95);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                padding: 20px;
+                box-sizing: border-box;
+            `;
 
             // Schließen-Button
             const closeButton = document.createElement('button');
             closeButton.innerHTML = '✖';
-            closeButton.style.position = 'absolute';
-            closeButton.style.top = '-50px';
-            closeButton.style.right = '0';
-            closeButton.style.background = 'none';
-            closeButton.style.border = 'none';
-            closeButton.style.fontSize = '36px';
-            closeButton.style.cursor = 'pointer';
-            closeButton.style.color = '#333';
+            closeButton.style.cssText = `
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 36px;
+                cursor: pointer;
+                color: #333;
+                z-index: 1001;
+            `;
+
+            // Hauptbild-Container
+            const imageContainer = document.createElement('div');
+            imageContainer.style.cssText = `
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 100%;
+                position: relative;
+            `;
+
+            // Vergrößertes Hauptbild
+            const enlargedImage = document.createElement('img');
+            enlargedImage.src = initialSrc;
+            enlargedImage.style.cssText = `
+                max-width: 90%;
+                max-height: 70vh;
+                object-fit: contain;
+                margin-bottom: 20px;
+            `;
+
+            // Thumbnail-Container
+            const thumbnailContainer = document.createElement('div');
+            thumbnailContainer.style.cssText = `
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                overflow-x: auto;
+                padding: 10px 0;
+            `;
+
+            // Dynamische Thumbnails erstellen
+            imageUrls.forEach(url => {
+                const thumb = document.createElement('img');
+                thumb.src = url;
+                thumb.style.cssText = `
+                    width: 60px;
+                    height: 60px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    border: 2px solid ${url === initialSrc ? '#7c3aed' : 'transparent'};
+                `;
+
+                thumb.addEventListener('click', () => {
+                    enlargedImage.src = url;
+                    
+                    // Aktive Thumbnail-Markierung aktualisieren
+                    thumbnailContainer.querySelectorAll('img').forEach(t => {
+                        t.style.border = t === thumb 
+                            ? '2px solid #7c3aed' 
+                            : '2px solid transparent';
+                    });
+                });
+
+                thumbnailContainer.appendChild(thumb);
+            });
+
+            // Navigation Buttons
+            const navContainer = document.createElement('div');
+            navContainer.style.cssText = `
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 90%;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            `;
+
+            const prevButton = document.createElement('button');
+            prevButton.innerHTML = '◀';
+            prevButton.style.cssText = `
+                background: rgba(0,0,0,0.1);
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                cursor: pointer;
+            `;
+
+            const nextButton = document.createElement('button');
+            nextButton.innerHTML = '▶';
+            nextButton.style.cssText = `
+                background: rgba(0,0,0,0.1);
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+                cursor: pointer;
+            `;
 
             // Bildnavigation
             let currentIndex = imageUrls.indexOf(initialSrc);
@@ -970,43 +1014,71 @@
             prevButton.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
                 enlargedImage.src = imageUrls[currentIndex];
+                updateThumbnailHighlight();
             });
 
             nextButton.addEventListener('click', () => {
                 currentIndex = (currentIndex + 1) % imageUrls.length;
                 enlargedImage.src = imageUrls[currentIndex];
+                updateThumbnailHighlight();
             });
 
+            function updateThumbnailHighlight() {
+                const thumbs = thumbnailContainer.querySelectorAll('img');
+                thumbs.forEach((thumb, index) => {
+                    thumb.style.border = index === currentIndex 
+                        ? '2px solid #7c3aed' 
+                        : '2px solid transparent';
+                });
+            }
+
+            // Schließen-Ereignisse
             closeButton.addEventListener('click', () => {
                 document.body.removeChild(modal);
             });
 
             // Tastaturnavigation
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowLeft') {
-                    prevButton.click();
-                } else if (e.key === 'ArrowRight') {
-                    nextButton.click();
-                } else if (e.key === 'Escape') {
-                    closeButton.click();
+                if (modal.parentElement) {
+                    if (e.key === 'ArrowLeft') prevButton.click();
+                    if (e.key === 'ArrowRight') nextButton.click();
+                    if (e.key === 'Escape') closeButton.click();
                 }
             });
 
-            imageContainer.appendChild(prevButton);
+            // Elemente zusammenfügen
+            navContainer.appendChild(prevButton);
+            navContainer.appendChild(nextButton);
+
             imageContainer.appendChild(enlargedImage);
-            imageContainer.appendChild(nextButton);
+            imageContainer.appendChild(thumbnailContainer);
 
             modal.appendChild(closeButton);
             modal.appendChild(imageContainer);
+            modal.appendChild(navContainer);
 
             document.body.appendChild(modal);
+
+            // Mobile Responsivität
+            function adjustForMobile() {
+                if (window.innerWidth <= 768) {
+                    enlargedImage.style.maxHeight = '50vh';
+                    prevButton.style.width = '40px';
+                    prevButton.style.height = '40px';
+                    nextButton.style.width = '40px';
+                    nextButton.style.height = '40px';
+                    thumbnailContainer.style.maxWidth = '100%';
+                }
+            }
+
+            adjustForMobile();
+            window.addEventListener('resize', adjustForMobile);
         }
 
-        // Thumbnail Vergrößerungsfunktion
+        // Event-Listener für Hauptbild und Thumbnails
+        mainImage.addEventListener('click', () => createImageModal(mainImage.src));
         thumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
-                createImageModal(this.src);
-            });
+            thumbnail.addEventListener('click', () => createImageModal(thumbnail.src));
         });
     });
 
