@@ -894,7 +894,7 @@
                 z-index: 1000;
                 padding: 20px;
                 box-sizing: border-box;
-                cursor: pointer; // Cursor für Schließen
+                cursor: default; // Standard-Cursor
             `;
 
             // Schließen-Button
@@ -921,7 +921,8 @@
                 width: 100%;
                 max-width: 100%;
                 position: relative;
-                pointer-events: none; // Verhindert Interferenz mit Modal-Schließen
+                overflow: hidden;
+                height: 70vh;
             `;
 
             // Vergrößertes Hauptbild
@@ -929,10 +930,10 @@
             enlargedImage.src = initialSrc;
             enlargedImage.style.cssText = `
                 max-width: 90%;
-                max-height: 70vh;
+                max-height: 100%;
                 object-fit: contain;
-                margin-bottom: 20px;
-                pointer-events: auto; // Bild klickbar
+                position: absolute;
+                transition: all 0.5s ease;
             `;
 
             // Thumbnail-Container
@@ -944,7 +945,6 @@
                 width: 100%;
                 overflow-x: auto;
                 padding: 10px 0;
-                pointer-events: auto; // Thumbnails klickbar
             `;
 
             // Dynamische Thumbnails erstellen
@@ -961,19 +961,47 @@
                 `;
 
                 thumb.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Verhindert Schließen beim Thumbnail-Klick
-                    enlargedImage.src = url;
-                    
-                    // Aktive Thumbnail-Markierung aktualisieren
-                    thumbnailContainer.querySelectorAll('img').forEach(t => {
-                        t.style.border = t === thumb 
-                            ? '2px solid #7c3aed' 
-                            : '2px solid transparent';
-                    });
+                    e.stopPropagation();
+                    changeImage(url);
                 });
 
                 thumbnailContainer.appendChild(thumb);
             });
+
+            // Bildwechsel-Funktion mit Animation
+            function changeImage(newSrc) {
+                const currentImage = enlargedImage;
+                const newImage = currentImage.cloneNode(true);
+                newImage.src = newSrc;
+                
+                // Animationseffekt
+                currentImage.style.transform = 'translateX(-100%)';
+                currentImage.style.opacity = '0';
+                
+                newImage.style.transform = 'translateX(100%)';
+                newImage.style.opacity = '0';
+                
+                imageContainer.appendChild(newImage);
+                
+                // Kurze Verzögerung für Animationsstart
+                setTimeout(() => {
+                    newImage.style.transform = 'translateX(0)';
+                    newImage.style.opacity = '1';
+                }, 50);
+                
+                // Altes Bild entfernen
+                setTimeout(() => {
+                    imageContainer.removeChild(currentImage);
+                }, 500);
+                
+                // Thumbnail-Highlight aktualisieren
+                const thumbs = thumbnailContainer.querySelectorAll('img');
+                thumbs.forEach(thumb => {
+                    thumb.style.border = thumb.src === newSrc 
+                        ? '2px solid #7c3aed' 
+                        : '2px solid transparent';
+                });
+            }
 
             // Navigation Buttons
             const navContainer = document.createElement('div');
@@ -985,7 +1013,6 @@
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
-                pointer-events: none;
             `;
 
             const prevButton = document.createElement('button');
@@ -998,7 +1025,6 @@
                 height: 50px;
                 font-size: 24px;
                 cursor: pointer;
-                pointer-events: auto;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             `;
 
@@ -1012,7 +1038,6 @@
                 height: 50px;
                 font-size: 24px;
                 cursor: pointer;
-                pointer-events: auto;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             `;
 
@@ -1020,27 +1045,16 @@
             let currentIndex = imageUrls.indexOf(initialSrc);
 
             prevButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // Verhindert Schließen beim Buttonklick
+                e.stopPropagation();
                 currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
-                enlargedImage.src = imageUrls[currentIndex];
-                updateThumbnailHighlight();
+                changeImage(imageUrls[currentIndex]);
             });
 
             nextButton.addEventListener('click', (e) => {
-                e.stopPropagation(); // Verhindert Schließen beim Buttonklick
+                e.stopPropagation();
                 currentIndex = (currentIndex + 1) % imageUrls.length;
-                enlargedImage.src = imageUrls[currentIndex];
-                updateThumbnailHighlight();
+                changeImage(imageUrls[currentIndex]);
             });
-
-            function updateThumbnailHighlight() {
-                const thumbs = thumbnailContainer.querySelectorAll('img');
-                thumbs.forEach((thumb, index) => {
-                    thumb.style.border = index === currentIndex 
-                        ? '2px solid #7c3aed' 
-                        : '2px solid transparent';
-                });
-            }
 
             // Schließen-Funktion
             function closeModal() {
@@ -1050,7 +1064,6 @@
             // Schließen-Ereignisse
             closeButton.addEventListener('click', closeModal);
             modal.addEventListener('click', (e) => {
-                // Schließen, wenn auf den weißen Bereich geklickt wird
                 if (e.target === modal) {
                     closeModal();
                 }
@@ -1070,10 +1083,10 @@
             navContainer.appendChild(nextButton);
 
             imageContainer.appendChild(enlargedImage);
-            imageContainer.appendChild(thumbnailContainer);
-
+            
             modal.appendChild(closeButton);
             modal.appendChild(imageContainer);
+            modal.appendChild(thumbnailContainer);
             modal.appendChild(navContainer);
 
             document.body.appendChild(modal);
@@ -1081,7 +1094,6 @@
             // Mobile Responsivität
             function adjustForMobile() {
                 if (window.innerWidth <= 768) {
-                    enlargedImage.style.maxHeight = '50vh';
                     prevButton.style.width = '40px';
                     prevButton.style.height = '40px';
                     nextButton.style.width = '40px';
