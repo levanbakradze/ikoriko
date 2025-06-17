@@ -869,6 +869,80 @@
         </div>
     </section>
 
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainImage = document.querySelector('.product-main-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        
+        // Thumbnail Klick-Ereignis
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                // Aktive Klasse von allen Thumbnails entfernen
+                thumbnails.forEach(t => t.classList.remove('active'));
+                
+                // Aktive Klasse zum geklickten Thumbnail hinzufügen
+                this.classList.add('active');
+                
+                // Hauptbild aktualisieren
+                mainImage.src = this.src;
+            });
+        });
+
+        // Bild Vergrößerungsfunktion
+        mainImage.addEventListener('click', function() {
+            // Modal für vergrößertes Bild erstellen
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+            modal.style.display = 'flex';
+            modal.style.justifyContent = 'center';
+            modal.style.alignItems = 'center';
+            modal.style.zIndex = '1000';
+
+            const enlargedImage = document.createElement('img');
+            enlargedImage.src = this.src;
+            enlargedImage.style.maxWidth = '90%';
+            enlargedImage.style.maxHeight = '90%';
+            enlargedImage.style.objectFit = 'contain';
+
+            const closeButton = document.createElement('button');
+            closeButton.innerHTML = '✖';
+            closeButton.style.position = 'absolute';
+            closeButton.style.top = '20px';
+            closeButton.style.right = '20px';
+            closeButton.style.background = 'white';
+            closeButton.style.border = 'none';
+            closeButton.style.fontSize = '24px';
+            closeButton.style.cursor = 'pointer';
+
+            closeButton.addEventListener('click', () => {
+                document.body.removeChild(modal);
+            });
+
+            modal.appendChild(enlargedImage);
+            modal.appendChild(closeButton);
+            document.body.appendChild(modal);
+        });
+    });
+
+    // Mengen-Änderungsfunktion
+    function changeQuantity(change) {
+        const quantityInput = document.getElementById('quantity');
+        let currentValue = parseInt(quantityInput.value);
+        let newValue = currentValue + change;
+        
+        if (newValue >= 1) {
+            quantityInput.value = newValue;
+        }
+    }
+</script>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
