@@ -371,14 +371,20 @@
             color: #333;
         }
 
-       /* Product Description */
+ /* Product Description */
 .product-description {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 40px 20px;
+    width: 100%; /* Full width */
+    max-width: 100%; /* Ensure it spans entire width */
+    margin: 40px 0; /* Remove horizontal auto margins */
+    padding: 40px 20px; /* Maintain padding */
     background: white;
-    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.description-container {
+    max-width: 1200px; /* Container for content */
+    margin: 0 auto; /* Center the content */
+    width: 100%;
 }
 
 .description-title {
@@ -404,6 +410,7 @@
     list-style: none;
     margin-top: 20px;
     border-top: 1px solid #eee;
+    padding: 0;
 }
 
 .specs-list li {
