@@ -1058,17 +1058,21 @@
                 changeImage(imageUrls[currentIndex]);
             });
 
-           // Schließen-Funktion
+          // Schließen-Funktion
 function closeModal() {
-    document.body.removeChild(modal);
+    if (modal && modal.parentElement) {
+        document.body.removeChild(modal);
+    }
 }
 
 // Schließen-Ereignisse
-closeButton.addEventListener('click', closeModal);
+closeButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeModal();
+});
 
-// Wichtig: Klick-Event direkt auf dem Modal
 modal.addEventListener('click', (e) => {
-    // Stelle sicher, dass nur auf den Hintergrund geklickt wird
+    // Nur schließen, wenn direkt auf den Modal-Hintergrund geklickt wird
     if (e.target === modal) {
         closeModal();
     }
@@ -1076,53 +1080,12 @@ modal.addEventListener('click', (e) => {
 
 // Tastaturnavigation
 document.addEventListener('keydown', function(e) {
-    if (modal.parentElement) {
+    if (modal && modal.parentElement) {
         if (e.key === 'ArrowLeft') prevButton.click();
         if (e.key === 'ArrowRight') nextButton.click();
         if (e.key === 'Escape') closeModal();
     }
 });
-            
-            // Schließen-Ereignisse
-            closeButton.addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Tastaturnavigation
-            document.addEventListener('keydown', function(e) {
-                if (modal.parentElement) {
-                    if (e.key === 'ArrowLeft') prevButton.click();
-                    if (e.key === 'ArrowRight') nextButton.click();
-                    if (e.key === 'Escape') closeModal();
-                }
-            });
-
-            // Schließen-Funktion
-function closeModal() {
-    document.body.removeChild(modal);
-}
-
-// Schließen-Ereignisse
-closeButton.addEventListener('click', closeModal);
-modal.addEventListener('click', (e) => {
-    // Schließen, wenn auf den weißen Bereich geklickt wird
-    if (e.target === modal) {
-        closeModal();
-    }
-});
-
-// Tastaturnavigation
-document.addEventListener('keydown', function(e) {
-    if (modal.parentElement) {
-        if (e.key === 'ArrowLeft') prevButton.click();
-        if (e.key === 'ArrowRight') nextButton.click();
-        if (e.key === 'Escape') closeModal();
-    }
-});
-
             // Elemente zusammenfügen
             navContainer.appendChild(prevButton);
             navContainer.appendChild(nextButton);
