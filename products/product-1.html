@@ -1058,11 +1058,31 @@
                 changeImage(imageUrls[currentIndex]);
             });
 
-            // Schließen-Funktion
-            function closeModal() {
-                document.body.removeChild(modal);
-            }
+           // Schließen-Funktion
+function closeModal() {
+    document.body.removeChild(modal);
+}
 
+// Schließen-Ereignisse
+closeButton.addEventListener('click', closeModal);
+
+// Wichtig: Klick-Event direkt auf dem Modal
+modal.addEventListener('click', (e) => {
+    // Stelle sicher, dass nur auf den Hintergrund geklickt wird
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Tastaturnavigation
+document.addEventListener('keydown', function(e) {
+    if (modal.parentElement) {
+        if (e.key === 'ArrowLeft') prevButton.click();
+        if (e.key === 'ArrowRight') nextButton.click();
+        if (e.key === 'Escape') closeModal();
+    }
+});
+            
             // Schließen-Ereignisse
             closeButton.addEventListener('click', closeModal);
             modal.addEventListener('click', (e) => {
