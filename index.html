@@ -1,638 +1,97 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ხელნაკეთი დანადგარები</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #ff;
-            color: #ff;
-        }
-
-        /* Header Styles */
-        .header {
-            background-color: #282828;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px #A9a9a9;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* Search and Actions Section */
-        .search-section {
-            background-color: #282828;
-            padding: 20px 0;
-        }
-
-        .search-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .search-box {
-            flex: 1;
-            max-width: 400px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-dark {
-            background-color: #333;
-            color: white;
-        }
-
-        .btn-light {
-            background-color: #f0f0f0;
-            color: #333;
-        }
-
-      /* Carousel Styles */
-.carousel-container {
-    position: relative;
-    width: 80%; /* Adjust overall width */
-    max-width: 1000px; /* Maximum width */
-    height: 180px; /* Fixed height - adjust as needed */
-    margin: 40px auto;
-    overflow: hidden;
-    background: linear-gradient(135deg, #a56beb, #9c5ce8);
-    border-radius: 15px;
-    padding: 0; /* Remove padding */
-    color: white;
-    font-family: sans-serif;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.carousel-slide.active {
-    display: block;
-    opacity: 1;
-}
-
-.carousel-slide {
-    background-size: cover; /* Ensures image covers entire area */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents image repetition */
-}
-
-        /* Main Content Section */
-        .main-content {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .product-card {
-            background-color: #f7f7f7;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .product-card a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .product-title {
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .product-price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-        /* Navigation Arrows */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255,255,255,0.7);
-    color: #333;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.prev {
-    left: 20px;
-}
-
-.next {
-    right: 20px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(255,255,255,0.9);
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* Dots Navigation */
-.carousel-dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    z-index: 10;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(255,255,255,0.4);
-    border-radius: 50%;
-    margin: 0 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot:hover {
-    background-color: rgba(255,255,255,0.7);
-}
-
-.dot.active-dot {
-    background-color: #fff;
-    transform: scale(1.2);
-}
-
-        /* Reviews Section */
-        .reviews-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 50px 20px;
-        }
-
-        .reviews-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            text-align: left;
-            color: #ff;
-        }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .review-card {
-            background-color: #282828;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
-
-        .stars {
-            display: flex;
-            gap: 3px;
-            margin-bottom: 15px;
-        }
-
-        .star {
-            color: #ddd;
-            font-size: 16px;
-        }
-
-        .star.filled {
-            color: #ffd700;
-        }
-
-        .review-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #ffff;
-        }
-
-        .review-body {
-            font-size: 14px;
-            color: #fff;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        .reviewer {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .reviewer-avatar {
-            width: 40px;
-            height: 40px;
-            background-color: #e0e0e0;
-            border-radius: 50%;
-        }
-
-        .reviewer-info {
-            font-size: 14px;
-        }
-
-        .reviewer-name {
-            font-weight: 600;
-            color: #dbdb;
-        }
-
-        .reviewer-date {
-            color: #dbdb;
-            font-size: 12px;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: white;
-            border-top: 1px solid #eee;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
-            margin-bottom: 30px;
-        }
-
-        .footer-left {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            width: 30px;
-            height: 30px;
-            background-color: #f0f0f0;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #666;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background-color: #333;
-            color: white;
-        }
-
-        .footer-right {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .footer-column h4 {
-            font-size: 16px;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #666;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .footer-links a:hover {
-            color: #333;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .subscribe-btn {
-            background-color: #25D366;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 20px;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        .subscribe-btn:hover {
-            background-color: #1ea952;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container,
-            .search-container,
-            .footer-container {
-                padding: 0 15px;
-            }
-            
-            .main-content {
-                margin: 30px auto;
-                padding: 0 15px;
-            }
-
-            .carousel-container {
-                width: 95%;
-                margin: 30px auto;
-                padding: 30px 15px;
-            }
-
-            .text-section h2 {
-                font-size: 24px;
-            }
-
-            .text-section p {
-                font-size: 16px;
-            }
-
-            .prev, .next {
-                padding: 10px 12px;
-                font-size: 16px;
-            }
-
-            .prev { left: 10px; }
-            .next { right: 10px; }
-            
-            .reviews-section {
-                margin: 40px auto;
-                padding: 30px 15px;
-            }
-            
-            .products-grid {
-                gap: 20px;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header centered within carousel -->
     <header class="header">
         <div class="header-container">
-            <div class="logo">🏛</div>
+            <a class="logo" id="home" href="index.html">🏛</a>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#">კოლექციები</a></li>
-                    <li><a href="#">ჩვენი ნაშრომები</a></li>
+                    <li><a href="#products">პროდუქცია</a></li>
+                    <li><a href="#reviews">შეფასებები</a></li>
                     <li><a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a></li>
                 </ul>
             </nav>
+            <div class="burger-menu" onclick="toggleMobileMenu()">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#products" onclick="toggleMobileMenu()">პროდუქცია</a>
+            <a href="#reviews" onclick="toggleMobileMenu()">შეფასებები</a>
+            <a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a>
         </div>
     </header>
 
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" placeholder="ძიება">
-                <span class="search-icon">🔍</span>
-            </div>
-            <div class="action-buttons">
-                <a href="#" class="btn btn-dark">შესვლა</a>
-                <a href="#" class="btn btn-light">ღია ნივთები</a>
-                <a href="#" class="btn btn-light">ღია კლასიკი</a>
-            </div>
+    <!-- Carousel Section - Full width -->
+    <div class="carousel-container">
+        <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
         </div>
-    </section>
-
-<!-- Carousel Section -->
-<div class="carousel-container">
-    <!-- Carousel Slide 1 -->
-    <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
-        <div class="carousel-content">
-            <!-- Removed text section -->
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        </div>
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        <div class="carousel-dots">
+            <span class="dot active-dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
     </div>
-
-    <!-- Carousel Slide 2 -->
-    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
-        <div class="carousel-content">
-            <!-- Removed text section -->
-        </div>
-    </div>
-
-    <!-- Carousel Slide 3 -->
-    <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
-        <div class="carousel-content">
-            <!-- Removed text section -->
-        </div>
-    </div>
-
-    <!-- Navigation arrows -->
-    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-    <button class="next" onclick="changeSlide(1)">&#10095;</button>
-
-    <!-- Dots indicator -->
-    <div class="carousel-dots">
-        <span class="dot active-dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
-</div>
 
     <!-- Main Content -->
-    <main class="main-content">
-         <h2 class="reviews-title">პროდუქცია</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <a href="products/product-1.html">
-                    <img src="https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-                    <h3 class="product-title">წოლჭიმის დანადგარი</h3>
-                    <p class="product-price">₾350</p>
-                </a>
+    <main class="main-content" id="products">
+        <div class="filter-section">
+            <h2 class="filter-title">პროდუქცია</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProducts('all')">ყველა</button>
+                <button class="filter-btn" onclick="filterProducts('gym')">დარბაზის დანადგარები</button>
+                <button class="filter-btn" onclick="filterProducts('armwrestling')">მკლავჭიდის სავარჯიშო დანადგარები</button>
+                <button class="filter-btn" onclick="filterProducts('accessories')">მკლავჭიდის აქსესუარები</button>
             </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-                <h3 class="product-title">მკლავჭიდის მაგიდა</h3>
-                <p class="product-price">₾157</p>
+        </div>
+
+        <!-- Desktop Products Grid -->
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be dynamically populated -->
+        </div>
+
+        <!-- Desktop Pagination -->
+        <div class="pagination" id="pagination">
+            <!-- Pagination will be dynamically populated -->
+        </div>
+
+        <!-- Mobile Products Carousel -->
+        <div class="products-carousel" id="products-carousel">
+            <div class="products-track" id="products-track">
+                <!-- Products will be dynamically populated -->
             </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-                <h3 class="product-title">მკლავჭიდის სახელური</h3>
-                <p class="product-price">₾360</p>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
-                <p class="product-price">₾200</p>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
-                <p class="product-price">₾200</p>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product description" class="product-image">
-                <h3 class="product-title">გამოსუქებული ბაბუნა</h3>
-                <p class="product-price">₾200</p>
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
+                <span class="carousel-counter" id="carousel-counter">1 / 10</span>
+                <button class="carousel-btn" id="next-btn" onclick="moveCarousel(1)">&#10095;</button>
             </div>
         </div>
     </main>
 
     <!-- Reviews Section -->
-    <section class="reviews-section">
+    <section class="reviews-section" id="reviews">
         <h2 class="reviews-title">შეფასებები</h2>
-        <div class="reviews-grid">
+        
+        <!-- Desktop Reviews Grid -->
+        <div class="reviews-grid" id="reviews-grid">
             <div class="review-card">
                 <div class="stars">
                     <span class="star filled">★</span>
@@ -706,9 +165,9 @@
                 </div>
                 <div class="footer-right">
                     <div class="footer-column">
-                        <h4>საშნელი</h4>
+                        <h4>ჩვენს შესახებ</h4>
                         <ul class="footer-links">
-                            <li><a href="#">დალაინებები მოძიებისა</a></li>
+                            <li><a href="Explanation.html">კომპანია</a></li>
                             <li><a href="#">ეს ა ფუნქციონი</a></li>
                             <li><a href="#">ქორობრია და რრა</a></li>
                         </ul>
@@ -727,52 +186,6 @@
         </div>
     </footer>
 
-    <script>
-        // Carousel JavaScript
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function changeSlide(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("carousel-slide");
-            let dots = document.getElementsByClassName("dot");
-            
-            // Wrap around logic for slides
-            if (n > slides.length) {
-                slideIndex = 1;
-            }
-            if (n < 1) {
-                slideIndex = slides.length;
-            }
-
-            // Hide all slides
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
-            }
-
-            // Remove active dot
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove("active-dot");
-            }
-
-            // Show current slide and mark current dot
-            if (slides.length > 0 && slideIndex <= slides.length) {
-                slides[slideIndex - 1].classList.add("active");
-                dots[slideIndex - 1].classList.add("active-dot");
-            }
-        }
-
-        // Optional: Auto-slide functionality
-        setInterval(() => {
-            changeSlide(1);
-        }, 5000); // Change slide every 5 seconds
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
