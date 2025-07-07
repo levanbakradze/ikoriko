@@ -7,7 +7,7 @@ const productsDatabase = {
             price: "₾350",
             image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "gym",
-            link: "product-1.html"
+            link: "products/product-1.html"
         },
         {
             id: 2,
