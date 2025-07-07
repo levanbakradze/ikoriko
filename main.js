@@ -205,7 +205,7 @@ function showProductDetails(productId) {
 
 // Show product list page
 function showProductList(category) {
-    const url = `product-list.html?category=${category}`;
+    const url = `products/product-list.html?category=${category}`;
     window.location.href = url;
 }
 
