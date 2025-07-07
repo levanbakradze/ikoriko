@@ -1,125 +1,684 @@
-<!DOCTYPE html>
-<html lang="ka">
-<head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="product-list.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>პროდუქტების სია - ხელნაკეთი დანადგარები</title>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <a class="logo" id="home" href="index.html">🏛</a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html#products">პროდუქცია</a></li>
-                    <li><a href="index.html#reviews">შეფასებები</a></li>
-                    <li><a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a></li>
-                </ul>
-            </nav>
-            <div class="burger-menu" onclick="toggleMobileMenu()">
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-                <span class="burger-line"></span>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
-            <a href="index.html#products" onclick="toggleMobileMenu()">პროდუქცია</a>
-            <a href="index.html#reviews" onclick="toggleMobileMenu()">შეფასებები</a>
-            <a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a>
-        </div>
-    </header>
+/* CSS Reset and Base Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
 
-    <!-- Main Container -->
-    <main class="main-container">
-        <!-- Page Header -->
-        <div class="page-header">
-            <h1 class="page-title" id="page-title">დარბაზის დანადგარები</h1>
-            <div class="breadcrumb">
-                <a href="index.html">მთავარი</a> / <span id="breadcrumb-category">დარბაზის დანადგარები</span>
-            </div>
-        </div>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        <!-- Content Layout -->
-        <div class="content-layout">
-            <!-- Products Section -->
-            <section class="products-section">
-                <div class="products-grid" id="products-grid">
-                    <!-- Products will be dynamically populated -->
-                </div>
-                
-                <!-- Pagination -->
-                <div class="pagination" id="pagination">
-                    <!-- Pagination will be dynamically populated -->
-                </div>
-            </section>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    padding-top: 80px; /* Space for fixed header */
+}
 
-            <!-- Filter Sidebar -->
-            <aside class="filter-sidebar">
-                <h3 class="filter-title">კატეგორიები</h3>
-                <div class="filter-options">
-                    <div class="filter-option active" onclick="filterProducts('all')">
-                        <i class="fas fa-th-large"></i>
-                        <span>ყველა პროდუქტი</span>
-                    </div>
-                    <div class="filter-option" onclick="filterProducts('gym')">
-                        <i class="fas fa-dumbbell"></i>
-                        <span>დარბაზის დანადგარები</span>
-                    </div>
-                    <div class="filter-option" onclick="filterProducts('armwrestling')">
-                        <i class="fas fa-hand-rock"></i>
-                        <span>მკლავჭიდის სავარჯიშო დანადგარები</span>
-                    </div>
-                    <div class="filter-option" onclick="filterProducts('accessories')">
-                        <i class="fas fa-tools"></i>
-                        <span>მკლავჭიდის აქსესუარები</span>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </main>
+html {
+    scroll-behavior: smooth;
+}
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <div class="footer-logo">🏛</div>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-right">
-                    <div class="footer-column">
-                        <h4>ჩვენს შესახებ</h4>
-                        <ul class="footer-links">
-                            <li><a href="Explanation.html">კომპანია</a></li>
-                            <li><a href="#">ეს ა ფუნქციონი</a></li>
-                            <li><a href="#">ქორობრია და რრა</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>დამატი</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Value</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <button class="subscribe-btn" onclick="window.open('https://wa.me/+995577627547', '_blank')">WhatsApp Contact</button>  
-            </div>
-        </div>
-    </footer>
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #000000;
+    padding: 20px 0;
+    border-radius: 0;
+    backdrop-filter: blur(0px);
+    z-index: 100;
+    box-sizing: border-box;
+}
 
-    <script src="product-list.js"></script>
-</body>
-</html>
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 0 30px;
+    margin: 0;
+    max-width: none;
+    width: 100%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #ffffff;
+    display: block;
+    position: relative;
+    left: 0;
+    bottom: -8px;
+    opacity: 0;
+    transition: all 0.2s;
+    pointer-events: none;
+}
+
+.nav-links a:hover {
+    color: #f0f0f0;
+}
+
+.nav-links a:hover::after {
+    opacity: 1;
+}
+
+/* Burger Menu */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.burger-menu.active .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    border-radius: 0;
+    z-index: 150;
+    flex-direction: column;
+    padding: 20px 0;
+    gap: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin-top: 0;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.mobile-menu a:hover {
+    color: #a56beb;
+}
+
+/* Main Container */
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    color: #666;
+}
+
+.breadcrumb a {
+    color: #a56beb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #9c5ce8;
+}
+
+/* Content Layout */
+.content-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+}
+
+/* Products Section */
+.products-section {
+    min-height: 600px;
+}
+
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Product Card Styles */
+.product-card {
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    line-height: 1.4;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #a56beb;
+}
+
+.details-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-1px);
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    background-color: #f8f9fa;
+    padding: 30px 25px;
+    border-radius: 12px;
+    height: fit-content;
+    position: sticky;
+    top: 120px; /* Account for fixed header */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.filter-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+    border-bottom: 2px solid #a56beb;
+    padding-bottom: 12px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 18px;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.filter-option:hover {
+    background-color: #a56beb;
+    color: white;
+    border-color: #9c5ce8;
+    transform: translateY(-2px);
+}
+
+.filter-option.active {
+    background-color: #a56beb;
+    color: white;
+    border-color: #9c5ce8;
+}
+
+.filter-option i {
+    font-size: 16px;
+    width: 20px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0;
+}
+
+.pagination-btn {
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    min-width: 45px;
+}
+
+.pagination-btn:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px);
+}
+
+.pagination-btn.active {
+    background-color: #a56beb;
+    color: white;
+}
+
+.pagination-btn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+/* Footer */
+.footer {
+    background-color: white;
+    border-top: 1px solid #eee;
+    padding: 40px 0;
+    margin-top: 60px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    width: 30px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: #333;
+    color: white;
+}
+
+.footer-right {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #333;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.subscribe-btn {
+    background-color: #25D366;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background-color: #1ea952;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 0;
+    }
+
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .main-container {
+        padding: 20px 15px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .content-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .filter-sidebar {
+        order: -1;
+        position: static;
+        top: auto;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .filter-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .filter-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .filter-option {
+        padding: 12px 15px;
+        font-size: 13px;
+    }
+
+    .filter-option span {
+        display: none;
+    }
+
+    .filter-option i {
+        font-size: 18px;
+        margin: 0 auto;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .product-card {
+        height: auto;
+        min-height: 300px;
+    }
+
+    .product-image {
+        height: 180px;
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-title {
+        font-size: 15px;
+        min-height: 40px;
+    }
+
+    .product-price {
+        font-size: 16px;
+    }
+
+    .details-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .pagination-btn {
+        padding: 10px 12px;
+        min-width: 40px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .header {
+        padding: 12px 0;
+    }
+
+    .header-container {
+        padding: 0 12px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .main-container {
+        padding: 15px 12px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .filter-sidebar {
+        padding: 15px;
+    }
+
+    .filter-options {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-option {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .filter-option span {
+        display: inline;
+        font-size: 14px;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        min-height: 280px;
+    }
+
+    .product-image {
+        height: 160px;
+    }
+
+    .product-title {
+        font-size: 14px;
+        min-height: 36px;
+    }
+
+    .pagination {
+        gap: 5px;
+        margin: 30px 0;
+    }
+
+    .pagination-btn {
+        padding: 8px 10px;
+        font-size: 13px;
+        min-width: 35px;
+    }
+}
