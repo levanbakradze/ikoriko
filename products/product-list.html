@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="product-list.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>პროდუქტების სია - ხელნაკეთი დანადგარები</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a class="logo" id="home" href="index.html">🏛</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#products">პროდუქცია</a></li>
+                    <li><a href="index.html#reviews">შეფასებები</a></li>
+                    <li><a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a></li>
+                </ul>
+            </nav>
+            <div class="burger-menu" onclick="toggleMobileMenu()">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html#products" onclick="toggleMobileMenu()">პროდუქცია</a>
+            <a href="index.html#reviews" onclick="toggleMobileMenu()">შეფასებები</a>
+            <a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title" id="page-title">დარბაზის დანადგარები</h1>
+            <div class="breadcrumb">
+                <a href="index.html">მთავარი</a> / <span id="breadcrumb-category">დარბაზის დანადგარები</span>
+            </div>
+        </div>
+
+        <!-- Content Layout -->
+        <div class="content-layout">
+            <!-- Products Section -->
+            <section class="products-section">
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be dynamically populated -->
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be dynamically populated -->
+                </div>
+            </section>
+
+            <!-- Filter Sidebar -->
+            <aside class="filter-sidebar">
+                <h3 class="filter-title">კატეგორიები</h3>
+                <div class="filter-options">
+                    <div class="filter-option active" onclick="filterProducts('all')">
+                        <i class="fas fa-th-large"></i>
+                        <span>ყველა პროდუქტი</span>
+                    </div>
+                    <div class="filter-option" onclick="filterProducts('gym')">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>დარბაზის დანადგარები</span>
+                    </div>
+                    <div class="filter-option" onclick="filterProducts('armwrestling')">
+                        <i class="fas fa-hand-rock"></i>
+                        <span>მკლავჭიდის სავარჯიშო დანადგარები</span>
+                    </div>
+                    <div class="filter-option" onclick="filterProducts('accessories')">
+                        <i class="fas fa-tools"></i>
+                        <span>მკლავჭიდის აქსესუარები</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">🏛</div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-column">
+                        <h4>ჩვენს შესახებ</h4>
+                        <ul class="footer-links">
+                            <li><a href="Explanation.html">კომპანია</a></li>
+                            <li><a href="#">ეს ა ფუნქციონი</a></li>
+                            <li><a href="#">ქორობრია და რრა</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>დამატი</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Value</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <button class="subscribe-btn" onclick="window.open('https://wa.me/+995577627547', '_blank')">WhatsApp Contact</button>  
+            </div>
+        </div>
+    </footer>
+
+    <script src="product-list.js"></script>
+</body>
+</html>
