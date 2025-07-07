@@ -36,11 +36,11 @@
 
     <!-- Carousel Section - Full width -->
     <div class="carousel-container">
-        <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <div class="carousel-slide active" style="background-image: url('https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
         </div>
-        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
         </div>
-        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+        <div class="carousel-slide" style="background-image: url('https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
         </div>
         <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
         <button class="next" onclick="changeSlide(1)">&#10095;</button>
@@ -53,37 +53,56 @@
 
     <!-- Main Content -->
     <main class="main-content" id="products">
-        <div class="filter-section">
-            <h2 class="filter-title">პროდუქცია</h2>
-            <div class="filter-buttons">
-                <button class="filter-btn active" onclick="filterProducts('all')">ყველა</button>
-                <button class="filter-btn" onclick="filterProducts('gym')">დარბაზის დანადგარები</button>
-                <button class="filter-btn" onclick="filterProducts('armwrestling')">მკლავჭიდის სავარჯიშო დანადგარები</button>
-                <button class="filter-btn" onclick="filterProducts('accessories')">მკლავჭიდის აქსესუარები</button>
+        <!-- Gym Equipment Category -->
+        <section class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">დარბაზის დანადგარები</h2>
+                <button class="show-all-btn" onclick="showProductList('gym')">
+                    ყველას ნახვა <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
-        </div>
-
-        <!-- Desktop Products Grid -->
-        <div class="products-grid" id="products-grid">
-            <!-- Products will be dynamically populated -->
-        </div>
-
-        <!-- Desktop Pagination -->
-        <div class="pagination" id="pagination">
-            <!-- Pagination will be dynamically populated -->
-        </div>
-
-        <!-- Mobile Products Carousel -->
-        <div class="products-carousel" id="products-carousel">
-            <div class="products-track" id="products-track">
-                <!-- Products will be dynamically populated -->
+            <div class="products-carousel">
+                <div class="products-track" id="gym-track">
+                    <!-- Products will be dynamically populated -->
+                </div>
+                <button class="carousel-nav-btn prev-btn" id="gym-prev" onclick="moveCarousel('gym', -1)">&#10094;</button>
+                <button class="carousel-nav-btn next-btn" id="gym-next" onclick="moveCarousel('gym', 1)">&#10095;</button>
             </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn" id="prev-btn" onclick="moveCarousel(-1)">&#10094;</button>
-                <span class="carousel-counter" id="carousel-counter">1 / 10</span>
-                <button class="carousel-btn" id="next-btn" onclick="moveCarousel(1)">&#10095;</button>
+        </section>
+
+        <!-- Armwrestling Equipment Category -->
+        <section class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">მკლავჭიდის სავარჯიშო დანადგარები</h2>
+                <button class="show-all-btn" onclick="showProductList('armwrestling')">
+                    ყველას ნახვა <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
-        </div>
+            <div class="products-carousel">
+                <div class="products-track" id="armwrestling-track">
+                    <!-- Products will be dynamically populated -->
+                </div>
+                <button class="carousel-nav-btn prev-btn" id="armwrestling-prev" onclick="moveCarousel('armwrestling', -1)">&#10094;</button>
+                <button class="carousel-nav-btn next-btn" id="armwrestling-next" onclick="moveCarousel('armwrestling', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- Accessories Category -->
+        <section class="category-section">
+            <div class="category-header">
+                <h2 class="category-title">მკლავჭიდის აქსესუარები</h2>
+                <button class="show-all-btn" onclick="showProductList('accessories')">
+                    ყველას ნახვა <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="products-carousel">
+                <div class="products-track" id="accessories-track">
+                    <!-- Products will be dynamically populated -->
+                </div>
+                <button class="carousel-nav-btn prev-btn" id="accessories-prev" onclick="moveCarousel('accessories', -1)">&#10094;</button>
+                <button class="carousel-nav-btn next-btn" id="accessories-next" onclick="moveCarousel('accessories', 1)">&#10095;</button>
+            </div>
+        </section>
     </main>
 
     <!-- Reviews Section -->
