@@ -5,71 +5,43 @@ const productsDatabase = {
             id: 1,
             title: "წოლჭიმის დანადგარი",
             price: "₾350",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "gym",
-            link: "products/product-1.html"
+            link: "product-1.html"
         },
         {
             id: 2,
             title: "მულტიფუნქციური ტრენაჟორი",
             price: "₾580",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "gym"
         },
         {
             id: 3,
             title: "ჰანტელების ნაკრები",
             price: "₾250",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "gym"
         },
         {
             id: 4,
             title: "ძალოვანი ღეროები",
             price: "₾180",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "gym"
         },
         {
             id: 5,
             title: "კარდიო ველოსიპედი",
             price: "₾420",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "gym"
         },
         {
             id: 6,
             title: "ფანქრული ღეროები",
             price: "₾300",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "gym"
-        },
-        {
-            id: 7,
-            title: "ღია ტრენაჟორი",
-            price: "₾380",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "gym"
-        },
-        {
-            id: 8,
-            title: "ზურგის ტრენაჟორი",
-            price: "₾290",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "gym"
-        },
-        {
-            id: 9,
-            title: "ლეგ პრესი",
-            price: "₾520",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "gym"
-        },
-        {
-            id: 10,
-            title: "ტრენაჟორთა კომპლექსი",
-            price: "₾750",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "gym"
         }
     ],
@@ -78,70 +50,42 @@ const productsDatabase = {
             id: 11,
             title: "მკლავჭიდის მაგიდა",
             price: "₾157",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "armwrestling"
         },
         {
             id: 12,
             title: "მკლავჭიდის სახელური",
             price: "₾360",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "armwrestling"
         },
         {
             id: 13,
             title: "ხელის ღეროები",
             price: "₾120",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "armwrestling"
         },
         {
             id: 14,
             title: "რეგულირებადი მაგიდა",
             price: "₾280",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "armwrestling"
         },
         {
             id: 15,
             title: "ძალის ტრენერი",
             price: "₾440",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "armwrestling"
         },
         {
             id: 16,
             title: "პროფესიონალური მაგიდა",
             price: "₾520",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "armwrestling"
-        },
-        {
-            id: 17,
-            title: "ხელის ტრენერი",
-            price: "₾190",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "armwrestling"
-        },
-        {
-            id: 18,
-            title: "ცხრილის ტრენერი",
-            price: "₾340",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "armwrestling"
-        },
-        {
-            id: 19,
-            title: "მოძრაობის ტრენერი",
-            price: "₾230",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "armwrestling"
-        },
-        {
-            id: 20,
-            title: "კომპლექსური ტრენერი",
-            price: "₾650",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "armwrestling"
         }
     ],
@@ -150,102 +94,53 @@ const productsDatabase = {
             id: 21,
             title: "ხელის ტერფები",
             price: "₾50",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "accessories"
         },
         {
             id: 22,
             title: "დაცვითი ხელთათმანები",
             price: "₾35",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "accessories"
         },
         {
             id: 23,
             title: "ელბოუ პედები",
             price: "₾45",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "accessories"
         },
         {
             id: 24,
             title: "რისტ სტრეპები",
             price: "₾25",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "accessories"
         },
         {
             id: 25,
             title: "მკლავჭიდის ბალიშები",
             price: "₾40",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "accessories"
         },
         {
             id: 26,
             title: "ღრმა ფეხსაცმელები",
             price: "₾80",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "accessories"
-        },
-        {
-            id: 27,
-            title: "ტრენინგ ფუტბოლკები",
-            price: "₾60",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "accessories"
-        },
-        {
-            id: 28,
-            title: "ღემბანის პროტექტორები",
-            price: "₾55",
-            image: "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "accessories"
-        },
-        {
-            id: 29,
-            title: "მაგნეზიუმის ფხვნილი",
-            price: "₾15",
-            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            category: "accessories"
-        },
-        {
-            id: 30,
-            title: "აქსესუარების ნაკრები",
-            price: "₾120",
-            image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             category: "accessories"
         }
     ]
 };
 
-// Reviews data for mobile carousel
-const reviewsData = [
-    {
-        title: "შესანიშნავი ხარისხი",
-        body: "ძალიან კმაყოფილი ვარ შეძენილი პროდუქტით. ხარისხი მაღალია და მუშაობა შესანიშნავია.",
-        name: "გიორგი მელაძე",
-        date: "15 მაისი 2024"
-    },
-    {
-        title: "რეკომენდირებული",
-        body: "მუშაობის ხარისხი ძალიან კარგია, სწრაფი მიწოდება და მომსახურება პროფესიონალურია.",
-        name: "ნინო ღუდუშაური",
-        date: "3 ივნისი 2024"
-    },
-    {
-        title: "მაღალი ხარისხი",
-        body: "ღირებულება და ხარისხი იდეალურად ერთმანეთს ებრძოლება. კმაყოფილი ვარ შეძენით.",
-        name: "დავით კოპალაძე",
-        date: "28 აპრილი 2024"
-    }
-];
-
-// Global variables
-let currentProducts = [];
-let currentCarouselIndex = 0;
-let currentPage = 1;
-const productsPerPage = 6;
+// Global variables for carousels
+let carouselPositions = {
+    gym: 0,
+    armwrestling: 0,
+    accessories: 0
+};
 
 // Mobile menu toggle
 function toggleMobileMenu() {
@@ -256,157 +151,151 @@ function toggleMobileMenu() {
     burgerMenu.classList.toggle('active');
 }
 
+// Get viewport info
+function getViewportInfo() {
+    const width = window.innerWidth;
+    if (width <= 480) {
+        return { type: 'mobile', cardsVisible: 2, cardWidth: 170 }; // 160px + 10px gap
+    } else if (width <= 768) {
+        return { type: 'tablet', cardsVisible: 2, cardWidth: 185 }; // 170px + 15px gap
+    } else {
+        return { type: 'desktop', cardsVisible: 3, cardWidth: 300 }; // 280px + 20px gap
+    }
+}
+
 // Create product card HTML
 function createProductCard(product) {
     return `
         <div class="product-card">
             ${product.link ? `<a href="${product.link}">` : ''}
                 <img src="${product.image}" alt="${product.title}" class="product-image">
-                <h3 class="product-title">${product.title}</h3>
-                <p class="product-price">${product.price}</p>
+                <div class="product-info">
+                    <h3 class="product-title">${product.title}</h3>
+                    <div class="product-bottom">
+                        <p class="product-price">${product.price}</p>
+                        <button class="details-btn" onclick="showProductDetails(${product.id}); event.preventDefault(); event.stopPropagation();">დეტალები</button>
+                    </div>
+                </div>
             ${product.link ? `</a>` : ''}
         </div>
     `;
 }
 
-// Filter products
-function filterProducts(category) {
-    // Update filter buttons - only if event exists (not on page load)
-    if (window.event) {
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        window.event.target.classList.add('active');
-    }
+// Create show all card
+function createShowAllCard(category) {
+    const categoryNames = {
+        gym: 'დარბაზის დანადგარები',
+        armwrestling: 'მკლავჭიდის სავარჯიშო დანადგარები',
+        accessories: 'მკლავჭიდის აქსესუარები'
+    };
 
-    // Get filtered products
-    if (category === 'all') {
-        currentProducts = [...productsDatabase.gym, ...productsDatabase.armwrestling, ...productsDatabase.accessories];
-    } else {
-        currentProducts = productsDatabase[category] || [];
-    }
-
-    // Reset pagination
-    currentPage = 1;
-    currentCarouselIndex = 0;
-
-    // Render products and pagination
-    renderProducts();
-    renderPagination();
-    updateCarouselControls();
+    return `
+        <div class="show-all-card" onclick="showProductList('${category}')">
+            <i class="fas fa-th-large"></i>
+            <h3>ყველას ნახვა</h3>
+            <p>მეტი ${categoryNames[category]}</p>
+        </div>
+    `;
 }
 
-// Render products for both desktop and mobile
-function renderProducts() {
-    const desktopGrid = document.getElementById('products-grid');
-    const mobileTrack = document.getElementById('products-track');
-
-    // Clear existing products
-    desktopGrid.innerHTML = '';
-    mobileTrack.innerHTML = '';
-
-    // Desktop: Show paginated products
-    const startIndex = (currentPage - 1) * productsPerPage;
-    const endIndex = startIndex + productsPerPage;
-    const paginatedProducts = currentProducts.slice(startIndex, endIndex);
-
-    paginatedProducts.forEach(product => {
-        const productHTML = createProductCard(product);
-        desktopGrid.innerHTML += productHTML;
-    });
-
-    // Mobile: Show all products in carousel
-    currentProducts.forEach(product => {
-        const productHTML = createProductCard(product);
-        mobileTrack.innerHTML += productHTML;
-    });
-
-    // Update mobile carousel position
-    updateCarouselPosition();
+// Show product details (placeholder function)
+function showProductDetails(productId) {
+    alert(`დეტალები პროდუქტისთვის ID: ${productId}\n(ეს ფუნქცია განვითარების პროცესშია)`);
 }
 
-// Render pagination
-function renderPagination() {
-    const pagination = document.getElementById('pagination');
-    const totalPages = Math.ceil(currentProducts.length / productsPerPage);
-    
-    pagination.innerHTML = '';
-    
-    if (totalPages <= 1) return;
-
-    // Previous button
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'pagination-btn';
-    prevBtn.innerHTML = '‹';
-    prevBtn.disabled = currentPage === 1;
-    prevBtn.onclick = () => goToPage(currentPage - 1);
-    pagination.appendChild(prevBtn);
-
-    // Page numbers
-    for (let i = 1; i <= totalPages; i++) {
-        const pageBtn = document.createElement('button');
-        pageBtn.className = `pagination-btn ${i === currentPage ? 'active' : ''}`;
-        pageBtn.innerHTML = i;
-        pageBtn.onclick = () => goToPage(i);
-        pagination.appendChild(pageBtn);
-    }
-
-    // Next button
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'pagination-btn';
-    nextBtn.innerHTML = '›';
-    nextBtn.disabled = currentPage === totalPages;
-    nextBtn.onclick = () => goToPage(currentPage + 1);
-    pagination.appendChild(nextBtn);
+// Show product list page
+function showProductList(category) {
+    const url = `product-list.html?category=${category}`;
+    window.location.href = url;
 }
 
-// Go to specific page
-function goToPage(page) {
-    const totalPages = Math.ceil(currentProducts.length / productsPerPage);
+// Move carousel
+function moveCarousel(category, direction) {
+    const viewport = getViewportInfo();
+    const totalProducts = productsDatabase[category].length;
+    const showAllExists = totalProducts > 4;
+    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0); // 4 products max + show all card
     
-    if (page < 1 || page > totalPages) return;
+    // Calculate max position
+    const maxPosition = Math.max(0, totalItems - viewport.cardsVisible);
     
-    currentPage = page;
-    renderProducts();
-    renderPagination();
-}
-
-// Mobile carousel navigation
-function moveCarousel(direction) {
-    const maxIndex = Math.max(0, currentProducts.length - 1);
+    // Update position
+    carouselPositions[category] += direction;
     
-    currentCarouselIndex += direction;
-    
-    if (currentCarouselIndex < 0) {
-        currentCarouselIndex = 0;
-    } else if (currentCarouselIndex > maxIndex) {
-        currentCarouselIndex = maxIndex;
+    // Constrain position
+    if (carouselPositions[category] < 0) {
+        carouselPositions[category] = 0;
+    } else if (carouselPositions[category] > maxPosition) {
+        carouselPositions[category] = maxPosition;
     }
     
-    updateCarouselPosition();
-    updateCarouselControls();
+    updateCarouselPosition(category);
+    updateCarouselControls(category);
 }
 
-// Update carousel position
-function updateCarouselPosition() {
-    const track = document.getElementById('products-track');
-    const cardWidth = 220 + 15; // card width + gap
-    const translateX = -currentCarouselIndex * cardWidth;
+// Update carousel position with centering
+function updateCarouselPosition(category) {
+    const track = document.getElementById(`${category}-track`);
+    if (!track) return;
+    
+    const viewport = getViewportInfo();
+    const container = track.parentElement;
+    const containerWidth = container.offsetWidth;
+    
+    // Calculate visible width and center offset
+    const visibleWidth = viewport.cardsVisible * viewport.cardWidth - (viewport.cardWidth - 280); // Adjust for actual card size
+    const centerOffset = (containerWidth - visibleWidth) / 2;
+    
+    // Calculate final transform
+    const translateX = centerOffset - (carouselPositions[category] * viewport.cardWidth);
+    
     track.style.transform = `translateX(${translateX}px)`;
 }
 
 // Update carousel controls
-function updateCarouselControls() {
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const counter = document.getElementById('carousel-counter');
+function updateCarouselControls(category) {
+    const prevBtn = document.getElementById(`${category}-prev`);
+    const nextBtn = document.getElementById(`${category}-next`);
     
-    const maxIndex = Math.max(0, currentProducts.length - 1);
+    if (!prevBtn || !nextBtn) return;
     
-    prevBtn.disabled = currentCarouselIndex === 0;
-    nextBtn.disabled = currentCarouselIndex >= maxIndex;
+    const viewport = getViewportInfo();
+    const totalProducts = productsDatabase[category].length;
+    const showAllExists = totalProducts > 4;
+    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0);
+    const maxPosition = Math.max(0, totalItems - viewport.cardsVisible);
     
-    counter.textContent = `${currentCarouselIndex + 1} / ${currentProducts.length}`;
+    // Update button states
+    prevBtn.disabled = carouselPositions[category] === 0;
+    nextBtn.disabled = carouselPositions[category] >= maxPosition;
+}
+
+// Render category products
+function renderCategoryProducts() {
+    const categories = ['gym', 'armwrestling', 'accessories'];
+    
+    categories.forEach(category => {
+        const track = document.getElementById(`${category}-track`);
+        if (!track) return;
+        
+        track.innerHTML = '';
+        
+        // Add first 4 products
+        const products = productsDatabase[category].slice(0, 4);
+        products.forEach(product => {
+            track.innerHTML += createProductCard(product);
+        });
+        
+        // Add show all card if there are more than 4 products
+        if (productsDatabase[category].length > 4) {
+            track.innerHTML += createShowAllCard(category);
+        }
+        
+        // Reset position and update
+        carouselPositions[category] = 0;
+        updateCarouselPosition(category);
+        updateCarouselControls(category);
+    });
 }
 
 // Carousel JavaScript for hero section
@@ -448,24 +337,25 @@ function showSlides(n) {
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
-    // Load all products first
-    currentProducts = [...productsDatabase.gym, ...productsDatabase.armwrestling, ...productsDatabase.accessories];
-    
-    // Set "ყველა" button as active
-    document.querySelector('.filter-btn[onclick="filterProducts(\'all\')"]').classList.add('active');
-    
-    // Render products and pagination
-    renderProducts();
-    renderPagination();
-    updateCarouselControls();
+    // Render category products
+    renderCategoryProducts();
     
     // Auto-slide for hero carousel
     setInterval(() => {
         changeSlide(1);
     }, 5000);
     
-    // Handle window resize for responsive design
+    // Handle window resize
+    let resizeTimeout;
     window.addEventListener('resize', function() {
-        updateCarouselPosition();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Reset all carousel positions and update
+            Object.keys(carouselPositions).forEach(category => {
+                carouselPositions[category] = 0;
+                updateCarouselPosition(category);
+                updateCarouselControls(category);
+            });
+        }, 150);
     });
 });
