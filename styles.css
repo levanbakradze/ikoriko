@@ -211,6 +211,12 @@ html {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .prev, .next {
+        display: none;
+    }
+}
+
 .prev {
     left: 20px;
 }
