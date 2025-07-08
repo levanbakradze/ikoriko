@@ -355,39 +355,59 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(() => {
         changeSlide(1);
     }, 5000);
-    ['gym', 'armwrestling', 'accessories'].forEach(category => {
-        const track = document.getElementById(`${category}-track`);
-        if (!track) return;
-        
-        let startX = 0;
-        let currentX = 0;
-        let isDragging = false;
-        
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        });
-        
-        track.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            currentX = e.touches[0].clientX;
-        });
-        
-        track.addEventListener('touchend', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            
-            const diff = startX - currentX;
-            if (Math.abs(diff) > 50) { // Minimum swipe distance
-                if (diff > 0) {
-                    moveCarousel(category, 1); // Swipe left, move right
-                } else {
-                    moveCarousel(category, -1); // Swipe right, move left
-                }
-            }
-        });
+ ['gym', 'armwrestling', 'accessories'].forEach(category => {
+    const track = document.getElementById(`${category}-track`);
+    if (!track) return;
+    
+    let startX = 0;
+    let startY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isDragging = false;
+    let isHorizontalSwipe = false;
+    
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isDragging = true;
+        isHorizontalSwipe = false;
     });
+    
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        currentX = e.touches[0].clientX;
+        currentY = e.touches[0].clientY;
+        
+        const diffX = Math.abs(currentX - startX);
+        const diffY = Math.abs(currentY - startY);
+        
+        // Determine if this is a horizontal swipe
+        if (diffX > diffY && diffX > 10) {
+            isHorizontalSwipe = true;
+            e.preventDefault(); // Only prevent default for horizontal swipes
+        } else if (diffY > diffX && diffY > 10) {
+            // This is vertical scrolling, don't interfere
+            isDragging = false;
+            return;
+        }
+    });
+
+
+         track.addEventListener('touchend', () => {
+        if (!isDragging || !isHorizontalSwipe) return;
+        isDragging = false;
+        
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) { // Minimum swipe distance
+            if (diff > 0) {
+                moveCarousel(category, 1); // Swipe left, move right
+            } else {
+                moveCarousel(category, -1); // Swipe right, move left
+            }
+        }
+    });
+});
     
     // Handle window resize
     let resizeTimeout;
