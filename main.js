@@ -233,7 +233,7 @@ function moveCarousel(category, direction) {
     updateCarouselControls(category);
 }
 
-// Replace the updateCarouselPosition function with:
+// Update carousel position with centering
 function updateCarouselPosition(category) {
     const track = document.getElementById(`${category}-track`);
     if (!track) return;
@@ -253,7 +253,6 @@ function updateCarouselPosition(category) {
     const translateX = centerOffset - (carouselPositions[category] * viewport.cardWidth);
     
     track.style.transform = `translateX(${Math.max(translateX, containerWidth - contentWidth)}px)`;
-
 }
 
 // Update carousel controls
@@ -341,73 +340,55 @@ function showSlides(n) {
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
-
-
-
-
-
-
-    
-    // Render category products
+    // Render category products FIRST
     renderCategoryProducts();
     
     // Auto-slide for hero carousel
     setInterval(() => {
         changeSlide(1);
     }, 5000);
- ['gym', 'armwrestling', 'accessories'].forEach(category => {
-    const track = document.getElementById(`${category}-track`);
-    if (!track) return;
     
-    let startX = 0;
-    let startY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let isDragging = false;
-    let isHorizontalSwipe = false;
-    
-    track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        isDragging = true;
-        isHorizontalSwipe = false;
-    });
-    
-    track.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
+    // Add touch support for each carousel
+    ['gym', 'armwrestling', 'accessories'].forEach(category => {
+        const track = document.getElementById(`${category}-track`);
+        if (!track) return;
         
-        currentX = e.touches[0].clientX;
-        currentY = e.touches[0].clientY;
+        let startX = 0;
+        let isDragging = false;
         
-        const diffX = Math.abs(currentX - startX);
-        const diffY = Math.abs(currentY - startY);
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        }, { passive: true });
         
-        // Determine if this is a horizontal swipe
-        if (diffX > diffY && diffX > 10) {
-            isHorizontalSwipe = true;
-            e.preventDefault(); // Only prevent default for horizontal swipes
-        } else if (diffY > diffX && diffY > 10) {
-            // This is vertical scrolling, don't interfere
-            isDragging = false;
-            return;
-        }
-    });
-
-
-         track.addEventListener('touchend', () => {
-        if (!isDragging || !isHorizontalSwipe) return;
-        isDragging = false;
-        
-        const diff = startX - currentX;
-        if (Math.abs(diff) > 50) { // Minimum swipe distance
-            if (diff > 0) {
-                moveCarousel(category, 1); // Swipe left, move right
-            } else {
-                moveCarousel(category, -1); // Swipe right, move left
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const currentX = e.touches[0].clientX;
+            const diffX = Math.abs(currentX - startX);
+            
+            // Only prevent default if it's clearly a horizontal swipe
+            if (diffX > 30) {
+                e.preventDefault();
             }
-        }
+        });
+        
+        track.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    moveCarousel(category, 1);
+                } else {
+                    moveCarousel(category, -1);
+                }
+            }
+        }, { passive: true });
     });
-});
     
     // Handle window resize
     let resizeTimeout;
