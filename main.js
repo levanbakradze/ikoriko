@@ -340,34 +340,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
     
     // Add touch support for each carousel - FIXED VERSION
-    ['gym', 'armwrestling', 'accessories'].forEach(category => {
-        const track = document.getElementById(`${category}-track`);
-        if (!track) return;
-        
-        let startX = 0;
-        let startY = 0;
-        let isDragging = false;
-        
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            startY = e.touches[0].clientY;
-            isDragging = true;
-        });
-        
-        track.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            
+ ['gym', 'armwrestling', 'accessories'].forEach(category => {
+    const track = document.getElementById(`${category}-track`);
+    if (!track) return;
+    
+    let startX = 0;
+    let startY = 0;
+    let isScrolling = undefined; // Will be true/false/undefined
+    
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isScrolling = undefined; // Reset
+    }, { passive: true });
+    
+    track.addEventListener('touchmove', (e) => {
+        // If we haven't determined the scroll direction yet
+        if (isScrolling === undefined) {
             const currentX = e.touches[0].clientX;
             const currentY = e.touches[0].clientY;
             
             const diffX = Math.abs(currentX - startX);
             const diffY = Math.abs(currentY - startY);
             
-            // Only prevent scroll if horizontal movement is greater than vertical
-            if (diffX > diffY && diffX > 20) {
-                e.preventDefault();
+            // Determine scroll direction based on first movement
+            isScrolling = diffY > diffX;
+        }
+        
+        // If user is scrolling vertically, don't interfere
+        if (isScrolling) {
+            return;
+        }
+        
+        // Only prevent default for horizontal movements
+        e.preventDefault();
+    });
+    
+    track.addEventListener('touchend', (e) => {
+        // Only handle carousel if it was horizontal movement
+        if (!isScrolling) {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    moveCarousel(category, 1);
+                } else {
+                    moveCarousel(category, -1);
+                }
             }
-        });
+        }
+    }, { passive: true });
+});
         
         track.addEventListener('touchend', (e) => {
             if (!isDragging) return;
