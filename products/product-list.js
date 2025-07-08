@@ -285,7 +285,7 @@ function updateFilterActive(category) {
         option.classList.remove('active');
     });
 
-     let targetFilter;
+   let targetFilter;
     
     if (category === 'all') {
         targetFilter = document.querySelector('.filter-option[onclick*="filterProducts(\'all\')"]');
