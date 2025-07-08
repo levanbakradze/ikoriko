@@ -153,13 +153,13 @@ function toggleMobileMenu() {
 
 // Get viewport info
 function getViewportInfo() {
-    const width = window.innerWidth;
+     const width = window.innerWidth;
     if (width <= 480) {
-        return { type: 'mobile', cardsVisible: 2, cardWidth: 170 }; // 160px + 10px gap
+        return { type: 'mobile', cardsVisible: 2, cardWidth: 180 }; // Adjusted for 160px card + 10px gap
     } else if (width <= 768) {
-        return { type: 'tablet', cardsVisible: 2, cardWidth: 185 }; // 170px + 15px gap
+        return { type: 'tablet', cardsVisible: 2, cardWidth: 190 }; // Adjusted for 170px card + 15px gap  
     } else {
-        return { type: 'desktop', cardsVisible: 3, cardWidth: 300 }; // 280px + 20px gap
+        return { type: 'desktop', cardsVisible: 3, cardWidth: 300 }; // 280px card + 20px gap
     }
 }
 
@@ -214,20 +214,19 @@ function moveCarousel(category, direction) {
     const viewport = getViewportInfo();
     const totalProducts = productsDatabase[category].length;
     const showAllExists = totalProducts > 4;
-    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0); // 4 products max + show all card
+    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0);
     
-    // Calculate max position
+    // Calculate max position (how many "screens" we can scroll)
     const maxPosition = Math.max(0, totalItems - viewport.cardsVisible);
     
     // Update position
     carouselPositions[category] += direction;
     
     // Constrain position
-    if (carouselPositions[category] < 0) {
-        carouselPositions[category] = 0;
-    } else if (carouselPositions[category] > maxPosition) {
-        carouselPositions[category] = maxPosition;
-    }
+    carouselPositions[category] = Math.max(0, Math.min(carouselPositions[category], maxPosition));
+    
+    // Debug log (remove this later)
+    console.log(`Category: ${category}, Position: ${carouselPositions[category]}, Max: ${maxPosition}, Total Items: ${totalItems}`);
     
     updateCarouselPosition(category);
     updateCarouselControls(category);
@@ -240,10 +239,18 @@ function updateCarouselPosition(category) {
     
     const viewport = getViewportInfo();
     
-    // Simple translation without complex centering
-    const translateX = -(carouselPositions[category] * viewport.cardWidth);
+    // Calculate translation based on card width and gap
+    let translateX;
+    if (viewport.type === 'mobile') {
+        translateX = -(carouselPositions[category] * (viewport.cardWidth + 10)); // 10px gap on mobile
+    } else {
+        translateX = -(carouselPositions[category] * (viewport.cardWidth + 20)); // 20px gap on desktop
+    }
     
     track.style.transform = `translateX(${translateX}px)`;
+    
+    // Debug log (remove this later)
+    console.log(`Transform: translateX(${translateX}px) for ${category}`);
 }
 
 // Update carousel controls
