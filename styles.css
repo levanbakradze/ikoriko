@@ -337,8 +337,8 @@ html {
     position: relative;
 }
 @media (hover: hover) and (pointer: fine) {
-    .product-card:hover {
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Keep shadow, remove movement */
+    .product-image:hover {
+        transform: scale(1.2); /* Zoom the image bigger */
     }
 }
 
@@ -356,15 +356,14 @@ html {
     object-fit: cover;
     display: block;
     border-bottom: 1px solid #e0e0e0;
-    transition: transform 0.3s ease; /* Add smooth transition */
-    transform-origin: center; /* Scale from center */
-    overflow: hidden; /* ADD THIS */
+    transition: transform 0.3s ease;
+    transform-origin: center;
 }
 
 /* ADD THIS NEW HOVER EFFECT: */
 @media (hover: hover) and (pointer: fine) {
     .product-image:hover {
-        transform: scale(1.1); /* Scale image to 110% */
+        transform: scale(1.1); /* Scale image to 120% */
     }
 }
 .product-info {
@@ -776,11 +775,12 @@ html {
     }
 
     .product-card {
-        width: 170px;
-        min-width: 170px;
-        height: auto;
-        min-height: 260px;
-    }
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    overflow: hidden; /* This clips the scaled image */
+    /* ... rest of your existing styles ... */
+}
+
 
     .show-all-card {
         width: 170px;
