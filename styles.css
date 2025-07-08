@@ -325,7 +325,7 @@ html {
 .product-card {
     background-color: #f7f7f7;
     border-radius: 12px;
-    overflow: hidden;
+    overflow: hidden; /* This should already be there, but make sure */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 320px;
@@ -336,7 +336,6 @@ html {
     min-width: 280px;
     position: relative;
 }
-
 @media (hover: hover) and (pointer: fine) {
     .product-card:hover {
         box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Keep shadow, remove movement */
@@ -359,6 +358,7 @@ html {
     border-bottom: 1px solid #e0e0e0;
     transition: transform 0.3s ease; /* Add smooth transition */
     transform-origin: center; /* Scale from center */
+    overflow: hidden; /* ADD THIS */
 }
 
 /* ADD THIS NEW HOVER EFFECT: */
