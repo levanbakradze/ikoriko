@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
     
     // Add touch support for each carousel - FIXED VERSION
- ['gym', 'armwrestling', 'accessories'].forEach(category => {
+['gym', 'armwrestling', 'accessories'].forEach(category => {
     const track = document.getElementById(`${category}-track`);
     if (!track) return;
     
@@ -392,28 +392,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { passive: true });
 });
-        
-        track.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            
-            const endX = e.changedTouches[0].clientX;
-            const endY = e.changedTouches[0].clientY;
-            
-            const diffX = Math.abs(endX - startX);
-            const diffY = Math.abs(endY - startY);
-            
-            // Only trigger carousel move if it was a horizontal swipe
-            if (diffX > diffY && diffX > 50) {
-                const diff = startX - endX;
-                if (diff > 0) {
-                    moveCarousel(category, 1);
-                } else {
-                    moveCarousel(category, -1);
-                }
-            }
-        });
-    });
     
     // Handle window resize
     let resizeTimeout;
