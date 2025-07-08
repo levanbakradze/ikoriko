@@ -233,30 +233,17 @@ function moveCarousel(category, direction) {
     updateCarouselControls(category);
 }
 
-// Update carousel position with centering
+// Update carousel position - FIXED VERSION
 function updateCarouselPosition(category) {
     const track = document.getElementById(`${category}-track`);
     if (!track) return;
     
     const viewport = getViewportInfo();
     
-    // Simple translation without centering offset
+    // Simple translation without complex centering
     const translateX = -(carouselPositions[category] * viewport.cardWidth);
     
     track.style.transform = `translateX(${translateX}px)`;
-}
-    
-    // Calculate total content width
-    const totalProducts = productsDatabase[category].length;
-    const showAllExists = totalProducts > 4;
-    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0);
-    const contentWidth = totalItems * viewport.cardWidth - (totalItems - 1) * 20; // 20px gap
-    
-    // Center the content
-    const centerOffset = (containerWidth - contentWidth) / 2;
-    const translateX = centerOffset - (carouselPositions[category] * viewport.cardWidth);
-    
-    track.style.transform = `translateX(${Math.max(translateX, containerWidth - contentWidth)}px)`;
 }
 
 // Update carousel controls
@@ -352,54 +339,69 @@ document.addEventListener('DOMContentLoaded', function() {
         changeSlide(1);
     }, 5000);
     
-    // Add touch support for each carousel
-  ['gym', 'armwrestling', 'accessories'].forEach(category => {
-    const track = document.getElementById(`${category}-track`);
-    if (!track) return;
-    
-    let startX = 0;
-    let startY = 0;
-    let isDragging = false;
-    
-    track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        isDragging = true;
-    });
-    
-    track.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
+    // Add touch support for each carousel - FIXED VERSION
+    ['gym', 'armwrestling', 'accessories'].forEach(category => {
+        const track = document.getElementById(`${category}-track`);
+        if (!track) return;
         
-        const currentX = e.touches[0].clientX;
-        const currentY = e.touches[0].clientY;
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
         
-        const diffX = Math.abs(currentX - startX);
-        const diffY = Math.abs(currentY - startY);
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        });
         
-        // Only prevent scroll if horizontal movement is greater than vertical
-        if (diffX > diffY && diffX > 20) {
-            e.preventDefault();
-        }
-    });
-    
-    track.addEventListener('touchend', (e) => {
-        if (!isDragging) return;
-        isDragging = false;
-        
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        
-        const diffX = Math.abs(endX - startX);
-        const diffY = Math.abs(endY - startY);
-        
-        // Only trigger carousel move if it was a horizontal swipe
-        if (diffX > diffY && diffX > 50) {
-            const diff = startX - endX;
-            if (diff > 0) {
-                moveCarousel(category, 1);
-            } else {
-                moveCarousel(category, -1);
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            
+            const diffX = Math.abs(currentX - startX);
+            const diffY = Math.abs(currentY - startY);
+            
+            // Only prevent scroll if horizontal movement is greater than vertical
+            if (diffX > diffY && diffX > 20) {
+                e.preventDefault();
             }
-        }
+        });
+        
+        track.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            
+            const diffX = Math.abs(endX - startX);
+            const diffY = Math.abs(endY - startY);
+            
+            // Only trigger carousel move if it was a horizontal swipe
+            if (diffX > diffY && diffX > 50) {
+                const diff = startX - endX;
+                if (diff > 0) {
+                    moveCarousel(category, 1);
+                } else {
+                    moveCarousel(category, -1);
+                }
+            }
+        });
+    });
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Reset all carousel positions and update
+            Object.keys(carouselPositions).forEach(category => {
+                carouselPositions[category] = 0;
+                updateCarouselPosition(category);
+                updateCarouselControls(category);
+            });
+        }, 150);
     });
 });
