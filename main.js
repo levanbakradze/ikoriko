@@ -341,6 +341,13 @@ function showSlides(n) {
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
+
+
+
+
+
+
+    
     // Render category products
     renderCategoryProducts();
     
@@ -348,6 +355,39 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(() => {
         changeSlide(1);
     }, 5000);
+    ['gym', 'armwrestling', 'accessories'].forEach(category => {
+        const track = document.getElementById(`${category}-track`);
+        if (!track) return;
+        
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+        
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+        
+        track.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            currentX = e.touches[0].clientX;
+        });
+        
+        track.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const diff = startX - currentX;
+            if (Math.abs(diff) > 50) { // Minimum swipe distance
+                if (diff > 0) {
+                    moveCarousel(category, 1); // Swipe left, move right
+                } else {
+                    moveCarousel(category, -1); // Swipe right, move left
+                }
+            }
+        });
+    });
     
     // Handle window resize
     let resizeTimeout;
