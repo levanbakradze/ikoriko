@@ -931,3 +931,22 @@ html {
         cursor: grabbing;
     }
 }
+
+@media (max-width: 768px) {
+    .product-card {
+        pointer-events: none; /* Disable all pointer events */
+    }
+    
+    .product-card a {
+        pointer-events: auto; /* Re-enable for links */
+    }
+    
+    .details-btn {
+        pointer-events: auto; /* Re-enable for buttons */
+    }
+    
+    .products-track {
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y; /* Only allow vertical panning */
+    }
+}
