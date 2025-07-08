@@ -209,9 +209,10 @@ html {
 /* Products Grid */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 280px)); /* Fixed width instead of auto-fit */
+    gap: 30px;
     margin-bottom: 40px;
+    justify-content: center; /* Center the grid */
 }
 
 /* Product Card Styles */
