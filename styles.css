@@ -471,6 +471,12 @@ html {
     visibility: hidden;
 }
 
+@media (max-width: 768px) {
+    .carousel-nav-btn {
+        display: none;
+    }
+}
+
 .products-carousel:hover .carousel-nav-btn {
     opacity: 1;
     visibility: visible;
