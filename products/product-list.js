@@ -296,7 +296,7 @@ function updateFilterActive(category) {
         }
     });
 }
-}
+
     
    
 
