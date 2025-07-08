@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-});
+
     
     // Handle window resize
     let resizeTimeout;
