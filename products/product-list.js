@@ -281,25 +281,21 @@ function updatePageInfo(category) {
 
 // Update filter sidebar active state
 function updateFilterActive(category) {
+    function updateFilterActive(category) {
+    // Remove active class from all options
     document.querySelectorAll('.filter-option').forEach(option => {
         option.classList.remove('active');
     });
-
-    let targetFilter;
     
-    if (category === 'all') {
-        targetFilter = document.querySelector('.filter-option[onclick*="filterProducts(\'all\')"]');
-    } else if (category === 'gym') {
-        targetFilter = document.querySelector('.filter-option[onclick*="filterProducts(\'gym\')"]');
-    } else if (category === 'armwrestling') {
-        targetFilter = document.querySelector('.filter-option[onclick*="filterProducts(\'armwrestling\')"]');
-    } else if (category === 'accessories') {
-        targetFilter = document.querySelector('.filter-option[onclick*="filterProducts(\'accessories\')"]');
-    }
-    
-    if (targetFilter) {
-        targetFilter.classList.add('active');
-    }
+    // Add active class to the correct option
+    const filterOptions = document.querySelectorAll('.filter-option');
+    filterOptions.forEach(option => {
+        const onclick = option.getAttribute('onclick');
+        if (onclick && onclick.includes(`filterProducts('${category}')`)) {
+            option.classList.add('active');
+        }
+    });
+}
 }
     
    
