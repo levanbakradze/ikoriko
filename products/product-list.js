@@ -281,11 +281,11 @@ function updatePageInfo(category) {
 
 // Update filter sidebar active state
 function updateFilterActive(category) {
-   document.querySelectorAll('.filter-option').forEach(option => {
+    document.querySelectorAll('.filter-option').forEach(option => {
         option.classList.remove('active');
     });
 
-   let targetFilter;
+    let targetFilter;
     
     if (category === 'all') {
         targetFilter = document.querySelector('.filter-option[onclick*="filterProducts(\'all\')"]');
@@ -302,11 +302,7 @@ function updateFilterActive(category) {
     }
 }
     
-    const activeFilter = document.querySelector(`.filter-option[onclick="filterProducts('${category}')"]`);
-    if (activeFilter) {
-        activeFilter.classList.add('active');
-    }
-}
+   
 
 // Filter products
 function filterProducts(category) {
