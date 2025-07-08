@@ -233,7 +233,7 @@ function moveCarousel(category, direction) {
     updateCarouselControls(category);
 }
 
-// Update carousel position with centering
+// Replace the updateCarouselPosition function with:
 function updateCarouselPosition(category) {
     const track = document.getElementById(`${category}-track`);
     if (!track) return;
@@ -242,14 +242,18 @@ function updateCarouselPosition(category) {
     const container = track.parentElement;
     const containerWidth = container.offsetWidth;
     
-    // Calculate visible width and center offset
-    const visibleWidth = viewport.cardsVisible * viewport.cardWidth - (viewport.cardWidth - 280); // Adjust for actual card size
-    const centerOffset = (containerWidth - visibleWidth) / 2;
+    // Calculate total content width
+    const totalProducts = productsDatabase[category].length;
+    const showAllExists = totalProducts > 4;
+    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0);
+    const contentWidth = totalItems * viewport.cardWidth - (totalItems - 1) * 20; // 20px gap
     
-    // Calculate final transform
+    // Center the content
+    const centerOffset = (containerWidth - contentWidth) / 2;
     const translateX = centerOffset - (carouselPositions[category] * viewport.cardWidth);
     
-    track.style.transform = `translateX(${translateX}px)`;
+    track.style.transform = `translateX(${Math.max(translateX, containerWidth - contentWidth)}px)`;
+
 }
 
 // Update carousel controls
