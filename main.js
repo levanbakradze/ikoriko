@@ -211,13 +211,22 @@ function showProductList(category) {
 
 // Move carousel
 function moveCarousel(category, direction) {
+   console.log(`BEFORE: Category: ${category}, Direction: ${direction}, Current Position: ${carouselPositions[category]}`);
+    
     const viewport = getViewportInfo();
     const totalProducts = productsDatabase[category].length;
     const showAllExists = totalProducts > 4;
-    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0);
     
-    // Calculate max position (how many "screens" we can scroll)
+    // Calculate total items displayed (4 products max + show all card if exists)
+    const displayedProducts = Math.min(4, totalProducts);
+    const totalItems = displayedProducts + (showAllExists ? 1 : 0);
+    
+    console.log(`Total Products: ${totalProducts}, Displayed: ${displayedProducts}, Show All: ${showAllExists}, Total Items: ${totalItems}`);
+    console.log(`Viewport: ${viewport.type}, Cards Visible: ${viewport.cardsVisible}`);
+    
+    // Calculate max position (how many steps we can move)
     const maxPosition = Math.max(0, totalItems - viewport.cardsVisible);
+    console.log(`Max Position: ${maxPosition}`);
     
     // Update position
     carouselPositions[category] += direction;
@@ -225,8 +234,7 @@ function moveCarousel(category, direction) {
     // Constrain position
     carouselPositions[category] = Math.max(0, Math.min(carouselPositions[category], maxPosition));
     
-    // Debug log (remove this later)
-    console.log(`Category: ${category}, Position: ${carouselPositions[category]}, Max: ${maxPosition}, Total Items: ${totalItems}`);
+    console.log(`AFTER: New Position: ${carouselPositions[category]}`);
     
     updateCarouselPosition(category);
     updateCarouselControls(category);
@@ -242,20 +250,24 @@ function updateCarouselPosition(category) {
     // Calculate translation based on card width and gap
     let translateX;
     if (viewport.type === 'mobile') {
-        translateX = -(carouselPositions[category] * (viewport.cardWidth + 10)); // 10px gap on mobile
+        // For mobile: card width (170px) + gap (15px) = 185px per step
+        translateX = -(carouselPositions[category] * 185);
+    } else if (viewport.type === 'tablet') {
+        // For tablet: card width (170px) + gap (15px) = 185px per step  
+        translateX = -(carouselPositions[category] * 185);
     } else {
-        translateX = -(carouselPositions[category] * (viewport.cardWidth + 20)); // 20px gap on desktop
+        // For desktop: card width (280px) + gap (20px) = 300px per step
+        translateX = -(carouselPositions[category] * 300);
     }
     
     track.style.transform = `translateX(${translateX}px)`;
     
-    // Debug log (remove this later)
     console.log(`Transform: translateX(${translateX}px) for ${category}`);
 }
 
 // Update carousel controls
 function updateCarouselControls(category) {
-    const prevBtn = document.getElementById(`${category}-prev`);
+   const prevBtn = document.getElementById(`${category}-prev`);
     const nextBtn = document.getElementById(`${category}-next`);
     
     if (!prevBtn || !nextBtn) return;
@@ -263,12 +275,17 @@ function updateCarouselControls(category) {
     const viewport = getViewportInfo();
     const totalProducts = productsDatabase[category].length;
     const showAllExists = totalProducts > 4;
-    const totalItems = Math.min(4, totalProducts) + (showAllExists ? 1 : 0);
+    
+    // Calculate total items and max position same as moveCarousel
+    const displayedProducts = Math.min(4, totalProducts);
+    const totalItems = displayedProducts + (showAllExists ? 1 : 0);
     const maxPosition = Math.max(0, totalItems - viewport.cardsVisible);
     
     // Update button states
     prevBtn.disabled = carouselPositions[category] === 0;
     nextBtn.disabled = carouselPositions[category] >= maxPosition;
+    
+    console.log(`Controls for ${category}: Prev disabled: ${prevBtn.disabled}, Next disabled: ${nextBtn.disabled}`);
 }
 
 // Render category products
