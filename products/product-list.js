@@ -280,8 +280,7 @@ function updatePageInfo(category) {
 }
 
 // Update filter sidebar active state
-function updateFilterActive(category) {
-    function updateFilterActive(category) {
+ function updateFilterActive(category) {
     // Remove active class from all options
     document.querySelectorAll('.filter-option').forEach(option => {
         option.classList.remove('active');
