@@ -909,4 +909,20 @@ html {
     .review-card {
         padding: 18px;
     }
+
+
+    .products-track {
+    touch-action: pan-x;
+    user-select: none;
+}
+
+
+    @media (max-width: 768px) {
+    .products-track {
+        cursor: grab;
+    }
+    
+    .products-track:active {
+        cursor: grabbing;
+    }
 }
