@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 5000);
     
     // Add touch support for each carousel
-   ['gym', 'armwrestling', 'accessories'].forEach(category => {
+  ['gym', 'armwrestling', 'accessories'].forEach(category => {
     const track = document.getElementById(`${category}-track`);
     if (!track) return;
     
@@ -401,20 +401,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 moveCarousel(category, -1);
             }
         }
-    });
-
-    
-    // Handle window resize
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Reset all carousel positions and update
-            Object.keys(carouselPositions).forEach(category => {
-                carouselPositions[category] = 0;
-                updateCarouselPosition(category);
-                updateCarouselControls(category);
-            });
-        }, 150);
     });
 });
