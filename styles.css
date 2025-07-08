@@ -339,8 +339,7 @@ html {
 
 @media (hover: hover) and (pointer: fine) {
     .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Keep shadow, remove movement */
     }
 }
 
@@ -358,8 +357,16 @@ html {
     object-fit: cover;
     display: block;
     border-bottom: 1px solid #e0e0e0;
+    transition: transform 0.3s ease; /* Add smooth transition */
+    transform-origin: center; /* Scale from center */
 }
 
+/* ADD THIS NEW HOVER EFFECT: */
+@media (hover: hover) and (pointer: fine) {
+    .product-image:hover {
+        transform: scale(1.1); /* Scale image to 110% */
+    }
+}
 .product-info {
     padding: 20px;
     display: flex;
