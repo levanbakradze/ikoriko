@@ -353,6 +353,48 @@ function showSlides(n) {
     }
 }
 
+
+// Enhanced Mobile Touch for Main Carousel - ADD THIS HERE
+let touchStartX = 0;
+let isDragging = false;
+
+const carouselContainer = document.querySelector('.carousel-container');
+if (carouselContainer) {
+    carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        isDragging = true;
+    }, { passive: true });
+
+    carouselContainer.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const currentX = e.touches[0].clientX;
+        const diffX = Math.abs(currentX - touchStartX);
+        
+        if (diffX > 15) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    carouselContainer.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        
+        const touchEndX = e.changedTouches[0].clientX;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                changeSlide(1);
+            } else {
+                changeSlide(-1);
+            }
+        }
+        
+        isDragging = false;
+    }, { passive: true });
+}
+
+
 // Initialize the page
 document.addEventListener('DOMContentLoaded', function() {
     // Render category products FIRST
