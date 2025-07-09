@@ -953,3 +953,12 @@ html {
     /* Remove the pointer-events: none from product-card */
     /* Keep the cards fully interactive */
 }
+
+    .carousel-container {
+    touch-action: pan-y;
+    cursor: grab;
+}
+
+.carousel-container:active {
+    cursor: grabbing;
+}
