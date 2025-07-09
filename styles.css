@@ -963,4 +963,231 @@ html {
     cursor: grabbing;
 }
 
+    You're absolutely right! It's much smarter to add the product page styles to your general styles.css file. That's the proper way to do it.
+Add this to the bottom of your styles.css file:
+css/* Product Page Styles */
+.product-detail-container {
+    max-width: 1200px;
+    margin: 100px auto 30px;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.product-image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-main-image {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.product-main-image:hover {
+    transform: scale(1.02);
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    border-color: #7c3aed;
+    transform: scale(1.1);
+}
+
+.product-info-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stars {
+    display: flex;
+    gap: 2px;
+}
+
+.star {
+    color: #ddd;
+    font-size: 16px;
+}
+
+.star.filled {
+    color: #ffd700;
+}
+
+.rating-count {
+    color: #666;
+    font-size: 14px;
+}
+
+.discount-badge {
+    background-color: #ef4444;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.product-price-section {
+    margin-bottom: 30px;
+}
+
+.product-price {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.price-original {
+    font-size: 20px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.product-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.product-specs {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.product-specs h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.spec-item:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.spec-value {
+    color: #666;
+}
+
+.purchase-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #25D366;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex: 1;
+}
+
+.btn-primary:hover {
+    background-color: #1ea952;
+}
+
+.error-message {
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;
+    margin: 100px 0;
+}
+
+.error-message a {
+    color: #7c3aed;
+    text-decoration: none;
+}
+
+.error-message a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .product-detail-container {
+        grid-template-columns: 1fr;
+        margin-top: 80px;
+        gap: 30px;
+        padding: 20px;
+    }
+    
+    .product-main-image {
+        max-width: 300px;
+        height: 300px;
+    }
+    
+    .product-title {
+        font-size: 24px;
+    }
+    
+    .product-price {
+        font-size: 28px;
+    }
+    
+    .purchase-buttons {
+        flex-direction: column;
+    }
+}
 
