@@ -138,52 +138,64 @@
 
     <script>
         // STEP 1: Extend your existing productsDatabase with more details
-        const detailedProductsDatabase = {
-            1: {
-                ...window.productsDatabase?.gym?.[0] || {
-                    id: 1,
-                    title: "წოლჭიმის დანადგარი",
-                    price: "₾350",
-                    image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "gym"
-                },
-                // Additional details for product page
-                images: [
-                    "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                ],
-                brand: "extra ხელნაკეთი & მუშავება",
-                description: "წოლჭიმის დანადგარი არის კარგად შეფუთული, პროფესიონალური ინსტრუმენტი, რომელიც განკუთვნილია სხვადასხვა ნაკეთობების განსახორციელებლად. ის ამზადებულია მაღალი ხარისხის მეტალისგან და უზრუნველყოფს გრძელვადიან მუშაობას.",
-                specs: {
-                    "მასალა": "მაღალი ხარისხის ლითონი",
-                    "ზომები": "120x60x40 სმ",
-                    "წონა": "15 კილოგრამი",
-                    "დამზადების ადგილი": "საქართველო",
-                    "გარანტია": "2 წელი"
-                }
-            },
-            2: {
-                id: 2,
-                title: "მულტიფუნქციური ტრენაჟორი",
-                price: "₾580",
-                image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                category: "gym",
-                images: [
-                    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                ],
-                brand: "extra ხელნაკეთი & მუშავება",
-                description: "მულტიფუნქციური ტრენაჟორი, რომელიც გთავაზობთ სრულ სავარჯიშო გადაწყვეტას თქვენი სახლისთვის.",
-                specs: {
-                    "მასალა": "ფოლადი",
-                    "ზომები": "180x120x200 სმ",
-                    "წონა": "35 კილოგრამი",
-                    "დამზადების ადგილი": "საქართველო",
-                    "გარანტია": "2 წელი"
-                }
-            }
+      const detailedProductsDatabase = {
+    1: {
+        id: 1,
+        title: "წოლჭიმის დანადგარი",
+        price: "₾350",
+        images: [
+            "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop"
+        ],
+        brand: "extra ხელნაკეთი & მუშავება",
+        description: "წოლჭიმის დანადგარი არის კარგად შეფუთული, პროფესიონალური ინსტრუმენტი, რომელიც განკუთვნილია სხვადასხვა ნაკეთობების განსახორციელებლად.",
+        specs: {
+            "მასალა": "მაღალი ხარისხის ლითონი",
+            "ზომები": "120x60x40 სმ",
+            "წონა": "15 კილოგრამი",
+            "დამზადების ადგილი": "საქართველო",
+            "გარანტია": "2 წელი"
+        }
+    },
+    2: {
+        id: 2,
+        title: "მულტიფუნქციური ტრენაჟორი",
+        price: "₾580",
+        images: [
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop"
+        ],
+        brand: "extra ხელნაკეთი & მუშავება",
+        description: "მულტიფუნქციური ტრენაჟორი, რომელიც გთავაზობთ სრულ სავარჯიშო გადაწყვეტას თქვენი სახლისთვის.",
+        specs: {
+            "მასალა": "ფოლადი",
+            "ზომები": "180x120x200 სმ",
+            "წონა": "35 კილოგრამი",
+            "დამზადების ადგილი": "საქართველო",
+            "გარანტია": "2 წელი"
+        }
+    },
+    3: {
+        id: 3,
+        title: "ჰანტელების ნაკრები",
+        price: "₾250",
+        images: [
+            "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop"
+        ],
+        brand: "extra ხელნაკეთი & მუშავება",
+        description: "ჰანტელების სრული ნაკრები სხვადასხვა წონით. იდეალურია ძალისა და გამძლეობის განვითარებისთვის.",
+        specs: {
+            "მასალა": "ლითონი და რეზინი",
+            "წონები": "2კგ-დან 20კგ-მდე",
+            "რაოდენობა": "8 წყვილი",
+            "დამზადების ადგილი": "საქართველო",
+            "გარანტია": "1 წელი"
+        }
+    }
             // Add more products as needed...
         };
 
