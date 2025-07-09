@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="dynamic-title">ხელნაკეთი დანადგარები</title>
+</head>
+<body>
+    <!-- Header - EXACT COPY from index.html -->
+    <header class="header">
+        <div class="header-container">
+            <a class="logo" id="home" href="../index.html">🏛</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html#products">პროდუქცია</a></li>
+                    <li><a href="../index.html#reviews">შეფასებები</a></li>
+                    <li><a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a></li>
+                </ul>
+            </nav>
+            <div class="burger-menu" onclick="toggleMobileMenu()">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="../index.html#products" onclick="toggleMobileMenu()">პროდუქცია</a>
+            <a href="../index.html#reviews" onclick="toggleMobileMenu()">შეფასებები</a>
+            <a href="https://wa.me/+995577627547" target="_blank">კონტაქტი</a>
+        </div>
+    </header>
+
+    <!-- Product Detail Container - EXACT COPY from product-1.html -->
+    <div class="product-detail-container" id="product-content">
+        <!-- Dynamic content will be loaded here -->
+    </div>
+
+    <!-- Reviews Section - EXACT COPY from index.html -->
+    <section class="reviews-section" id="reviews">
+        <h2 class="reviews-title">შეფასებები</h2>
+        <div class="reviews-grid" id="reviews-grid">
+            <div class="review-card">
+                <div class="stars">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                </div>
+                <h3 class="review-title">შესანიშნავი ხარისხი</h3>
+                <p class="review-body">ძალიან კმაყოფილი ვარ შეძენილი პროდუქტით. ხარისხი მაღალია და მუშაობა შესანიშნავია.</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">გიორგი მელაძე</div>
+                        <div class="reviewer-date">15 მაისი 2024</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                </div>
+                <h3 class="review-title">რეკომენდირებული</h3>
+                <p class="review-body">მუშაობის ხარისხი ძალიან კარგია, სწრაფი მიწოდება და მომსახურება პროფესიონალურია.</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">ნინო ღუდუშაური</div>
+                        <div class="reviewer-date">3 ივნისი 2024</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                </div>
+                <h3 class="review-title">მაღალი ხარისხი</h3>
+                <p class="review-body">ღირებულება და ხარისხი იდეალურად ერთმანეთს ებრძოლება. კმაყოფილი ვარ შეძენით.</p>
+                <div class="reviewer">
+                    <div class="reviewer-avatar"></div>
+                    <div class="reviewer-info">
+                        <div class="reviewer-name">დავით კოპალაძე</div>
+                        <div class="reviewer-date">28 აპრილი 2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - EXACT COPY from index.html -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">🏛</div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-column">
+                        <h4>ჩვენს შესახებ</h4>
+                        <ul class="footer-links">
+                            <li><a href="Explanation.html">კომპანია</a></li>
+                            <li><a href="#">ეს ა ფუნქციონი</a></li>
+                            <li><a href="#">ქორობრია და რრა</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>დამატი</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Value</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <button class="subscribe-btn" onclick="window.open('https://wa.me/+995577627547', '_blank')">WhatsApp Contact</button>  
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // STEP 1: Extend your existing productsDatabase with more details
+        const detailedProductsDatabase = {
+            1: {
+                ...window.productsDatabase?.gym?.[0] || {
+                    id: 1,
+                    title: "წოლჭიმის დანადგარი",
+                    price: "₾350",
+                    image: "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    category: "gym"
+                },
+                // Additional details for product page
+                images: [
+                    "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                ],
+                brand: "extra ხელნაკეთი & მუშავება",
+                description: "წოლჭიმის დანადგარი არის კარგად შეფუთული, პროფესიონალური ინსტრუმენტი, რომელიც განკუთვნილია სხვადასხვა ნაკეთობების განსახორციელებლად. ის ამზადებულია მაღალი ხარისხის მეტალისგან და უზრუნველყოფს გრძელვადიან მუშაობას.",
+                specs: {
+                    "მასალა": "მაღალი ხარისხის ლითონი",
+                    "ზომები": "120x60x40 სმ",
+                    "წონა": "15 კილოგრამი",
+                    "დამზადების ადგილი": "საქართველო",
+                    "გარანტია": "2 წელი"
+                }
+            },
+            2: {
+                id: 2,
+                title: "მულტიფუნქციური ტრენაჟორი",
+                price: "₾580",
+                image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                category: "gym",
+                images: [
+                    "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    "https://images.unsplash.com/photo-1633989464081-16ccd31287a1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    "https://images.unsplash.com/photo-1745233710584-332f527ecd0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHhواG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                ],
+                brand: "extra ხელნაკეთი & მუშავება",
+                description: "მულტიფუნქციური ტრენაჟორი, რომელიც გთავაზობთ სრულ სავარჯიშო გადაწყვეტას თქვენი სახლისთვის.",
+                specs: {
+                    "მასალა": "ფოლადი",
+                    "ზომები": "180x120x200 სმ",
+                    "წონა": "35 კილოგრამი",
+                    "დამზადების ადგილი": "საქართველო",
+                    "გარანტია": "2 წელი"
+                }
+            }
+            // Add more products as needed...
+        };
+
+        // STEP 2: Get product ID from URL
+        function getProductId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || '1';
+        }
+
+        // STEP 3: Load product content dynamically
+        function loadProductContent() {
+            const productId = getProductId();
+            const product = detailedProductsDatabase[productId];
+
+            if (!product) {
+                document.getElementById('product-content').innerHTML = 
+                    '<p style="text-align: center; margin: 100px 0;">პროდუქტი ვერ მოიძებნა</p>';
+                return;
+            }
+
+            // Update page title
+            document.getElementById('dynamic-title').textContent = product.title + ' - ხელნაკეთი დანადგარები';
+
+            // Generate thumbnails
+            const thumbnailsHTML = product.images.map((img, index) => 
+                `<img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`
+            ).join('');
+
+            // Generate specs
+            const specsHTML = Object.entries(product.specs).map(([key, value]) => 
+                `<li>
+                    <span class="spec-label">${key}:</span>
+                    <span class="spec-value">${value}</span>
+                </li>`
+            ).join('');
+
+            // Use EXACT HTML structure from your product-1.html
+            document.getElementById('product-content').innerHTML = `
+                <div class="product-image-section">
+                    <img src="${product.images[0]}" alt="${product.title}" class="product-main-image" id="main-image">
+                    <div class="product-thumbnails">
+                        ${thumbnailsHTML}
+                    </div>
+                </div>
+
+                <div class="product-info-section">
+                    <div class="product-id">ID ${product.id}</div>
+                    <h1 class="product-title">${product.title}</h1>
+                    
+                    <div class="product-brand">
+                        ბრენდი: <a href="#">${product.brand || 'extra ხელნაკეთი & მუშავება'}</a>
+                    </div>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                        <span class="rating-count">76 👤 95</span>
+                        <span class="discount-badge">-20%</span>
+                    </div>
+
+                    <div class="product-status">
+                        <div class="status-label">პროდუქტის აღწერა:</div>
+                        <div class="status-info">გარანტია: 31/10/2025</div>
+                        <div class="status-info">ტიპი: სავარჯიშო დანადგარი</div>
+                        <div class="status-info">წონა: ${product.specs.წონა || '15 კგ'}</div>
+                    </div>
+
+                    <div class="product-price-section">
+                        <div class="price-current">
+                            <span>${product.price}</span>
+                            <span class="price-original">₾438</span>
+                        </div>
+                    </div>
+
+                    <div class="delivery-info">
+                        <i class="fas fa-truck delivery-icon"></i>
+                        <span>მიტანის სერვისი: დღეს</span>
+                    </div>
+
+                    <div class="purchase-buttons">
+                        <button class="btn-primary" onclick="window.open('https://wa.me/+995577627547', '_blank')">შეძენა WhatsApp-ზე</button>                                                                                 
+                        <button class="btn-secondary">დამატებითი</button>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-title">ტელეფონით შეკვეთა</div>
+                        <div class="contact-number">
+                            <i class="fas fa-phone"></i>
+                            <span>032 2 333 111</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description-integrated">
+                        <h2 class="description-title">პროდუქტის შესახებ</h2>
+                        <div class="description-content">
+                            <p>${product.description}</p>
+                            
+                            <ul class="specs-list">
+                                ${specsHTML}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // STEP 4: Change main image function
+        function changeMainImage(imageSrc, thumbnail) {
+            document.getElementById('main-image').src = imageSrc;
+            document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        // STEP 5: Mobile menu toggle (from your original)
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const burgerMenu = document.querySelector('.burger-menu');
+            
+            mobileMenu.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+        }
+
+        // STEP 6: Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProductContent();
+        });
+    </script>
+</body>
+</html>
