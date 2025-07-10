@@ -337,6 +337,7 @@ body.product-page .header {
 
 /* Product Card Styles */
 .product-card {
+    .product-card {
     background-color: #f7f7f7;
     border-radius: 12px;
     overflow: hidden;
@@ -383,7 +384,7 @@ body.product-page .header {
 }
 
 .product-title {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 15px;
     color: #333;
