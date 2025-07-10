@@ -34,7 +34,7 @@
     </header>
 
     <!-- Product Detail Container - EXACT COPY from product-1.html -->
-    <div id="product-content">
+    <div class="product-detail-container" id="product-content">
         <!-- Dynamic content will be loaded here -->
     </div>
 
@@ -211,80 +211,100 @@
             const product = detailedProductsDatabase[productId];
 
             if (!product) {
-                document.getElementById('product-content').innerHTML = `
-    <div class="product-detail-container">
-        <div class="product-image-section">
-            <img src="${product.images[0]}" alt="${product.title}" class="product-main-image" id="main-image">
-            <div class="product-thumbnails">
-                ${thumbnailsHTML}
-            </div>
-        </div>
+                document.getElementById('product-content').innerHTML = 
+                    '<p style="text-align: center; margin: 100px 0;">პროდუქტი ვერ მოიძებნა</p>';
+                return;
+            }
 
-        <div class="product-info-section">
-            <div class="product-id">ID ${product.id}</div>
-            <h1 class="product-title">${product.title}</h1>
-            
-            <div class="product-brand">
-                ბრენდი: <a href="#">${product.brand || 'extra ხელნაკეთი & მუშავება'}</a>
-            </div>
-            
-            <div class="product-rating">
-                <div class="stars">
-                    <span class="star filled">★</span>
-                    <span class="star filled">★</span>
-                    <span class="star filled">★</span>
-                    <span class="star filled">★</span>
-                    <span class="star filled">★</span>
+            // Update page title
+            document.getElementById('dynamic-title').textContent = product.title + ' - ხელნაკეთი დანადგარები';
+
+            // Generate thumbnails
+            const thumbnailsHTML = product.images.map((img, index) => 
+                `<img src="${img}" alt="Thumbnail ${index + 1}" class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`
+            ).join('');
+
+            // Generate specs
+            const specsHTML = Object.entries(product.specs).map(([key, value]) => 
+                `<li>
+                    <span class="spec-label">${key}:</span>
+                    <span class="spec-value">${value}</span>
+                </li>`
+            ).join('');
+
+            // Use EXACT HTML structure from your product-1.html
+            document.getElementById('product-content').innerHTML = `
+                <div class="product-image-section">
+                    <img src="${product.images[0]}" alt="${product.title}" class="product-main-image" id="main-image">
+                    <div class="product-thumbnails">
+                        ${thumbnailsHTML}
+                    </div>
                 </div>
-                <span class="rating-count">76 👤 95</span>
-                <span class="discount-badge">-20%</span>
-            </div>
 
-            <div class="product-status">
-                <div class="status-label">პროდუქტის აღწერა:</div>
-                <div class="status-info">გარანტია: 31/10/2025</div>
-                <div class="status-info">ტიპი: სავარჯიშო დანადგარი</div>
-                <div class="status-info">წონა: ${product.specs.წონა || '15 კგ'}</div>
-            </div>
-
-            <div class="product-price-section">
-                <div class="price-current">
-                    <span>${product.price}</span>
-                    <span class="price-original">₾438</span>
-                </div>
-            </div>
-
-            <div class="delivery-info">
-                <i class="fas fa-truck delivery-icon"></i>
-                <span>მიტანის სერვისი: დღეს</span>
-            </div>
-
-            <div class="purchase-buttons">
-                <button class="btn-primary" onclick="window.open('https://wa.me/+995577627547', '_blank')">შეძენა WhatsApp-ზე</button>                                                                                 
-                <button class="btn-secondary">დამატებითი</button>
-            </div>
-
-            <div class="contact-info">
-                <div class="contact-title">ტელეფონით შეკვეთა</div>
-                <div class="contact-number">
-                    <i class="fas fa-phone"></i>
-                    <span>032 2 333 111</span>
-                </div>
-            </div>
-
-            <div class="product-description-integrated">
-                <h2 class="description-title">პროდუქტის შესახებ</h2>
-                <div class="description-content">
-                    <p>${product.description}</p>
+                <div class="product-info-section">
+                    <div class="product-id">ID ${product.id}</div>
+                    <h1 class="product-title">${product.title}</h1>
                     
-                    <ul class="specs-list">
-                        ${specsHTML}
-                    </ul>
+                    <div class="product-brand">
+                        ბრენდი: <a href="#">${product.brand || 'extra ხელნაკეთი & მუშავება'}</a>
+                    </div>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                        </div>
+                        <span class="rating-count">76 👤 95</span>
+                        <span class="discount-badge">-20%</span>
+                    </div>
+
+                    <div class="product-status">
+                        <div class="status-label">პროდუქტის აღწერა:</div>
+                        <div class="status-info">გარანტია: 31/10/2025</div>
+                        <div class="status-info">ტიპი: სავარჯიშო დანადგარი</div>
+                        <div class="status-info">წონა: ${product.specs.წონა || '15 კგ'}</div>
+                    </div>
+
+                    <div class="product-price-section">
+                        <div class="price-current">
+                            <span>${product.price}</span>
+                            <span class="price-original">₾438</span>
+                        </div>
+                    </div>
+
+                    <div class="delivery-info">
+                        <i class="fas fa-truck delivery-icon"></i>
+                        <span>მიტანის სერვისი: დღეს</span>
+                    </div>
+
+                    <div class="purchase-buttons">
+                        <button class="btn-primary" onclick="window.open('https://wa.me/+995577627547', '_blank')">შეძენა WhatsApp-ზე</button>                                                                                 
+                        <button class="btn-secondary">დამატებითი</button>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="contact-title">ტელეფონით შეკვეთა</div>
+                        <div class="contact-number">
+                            <i class="fas fa-phone"></i>
+                            <span>032 2 333 111</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description-integrated">
+                        <h2 class="description-title">პროდუქტის შესახებ</h2>
+                        <div class="description-content">
+                            <p>${product.description}</p>
+                            
+                            <ul class="specs-list">
+                                ${specsHTML}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-`;
+            `;
         }
 
         // STEP 4: Change main image function
@@ -310,6 +330,3 @@
     </script>
 </body>
 </html>
-
-
-
