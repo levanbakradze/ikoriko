@@ -1,3 +1,66 @@
+/* Contact Top Bar */
+.contact-top-bar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 8px 0;
+    font-size: 13px;
+    color: #666;
+    position: relative;
+    z-index: 101;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-info,
+.contact-hours {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.contact-info i,
+.contact-hours i {
+    color: #a56beb;
+    font-size: 12px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 0 15px;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .contact-hours {
+        display: none; /* Hide hours on mobile to save space */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-top-bar {
+        padding: 6px 0;
+        font-size: 12px;
+    }
+    
+    .contact-container {
+        padding: 0 12px;
+    }
+}
+
+
+
+
+
+
+
 /* CSS Reset and Base Styles */
 html, body {
     margin: 0;
