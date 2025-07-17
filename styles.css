@@ -1190,10 +1190,17 @@ body.product-page .header {
         padding: 0 15px;
     }
 
-    /* Product page mobile */
+  @media (max-width: 768px) {
     body.product-page {
-        padding-top: 70px;
+        padding-top: 105px; /* Changed from 70px */
     }
+}
+
+@media (max-width: 480px) {
+    body.product-page {
+        padding-top: 95px; /* Changed from 60px */
+    }
+}
     
     .product-detail-container {
         grid-template-columns: 1fr;
