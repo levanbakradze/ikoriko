@@ -1,66 +1,3 @@
-/* Contact Top Bar */
-.contact-top-bar {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 8px 0;
-    font-size: 13px;
-    color: #666;
-    position: relative;
-    z-index: 101;
-}
-
-.contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.contact-info,
-.contact-hours {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.contact-info i,
-.contact-hours i {
-    color: #a56beb;
-    font-size: 12px;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .contact-container {
-        padding: 0 15px;
-        justify-content: center;
-        gap: 20px;
-    }
-    
-    .contact-hours {
-        display: none; /* Hide hours on mobile to save space */
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-top-bar {
-        padding: 6px 0;
-        font-size: 12px;
-    }
-    
-    .contact-container {
-        padding: 0 12px;
-    }
-}
-
-
-
-
-
-
-
 /* CSS Reset and Base Styles */
 html, body {
     margin: 0;
@@ -75,10 +12,13 @@ html, body {
     box-sizing: border-box;
 }
 
-body.product-page {
-    padding-top: 115px; /* Changed from 80px to accommodate the new top bar */
-    background-color: #f8f9fa;
-    color: #333;
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #fff;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 html {
@@ -1190,17 +1130,10 @@ body.product-page .header {
         padding: 0 15px;
     }
 
-  @media (max-width: 768px) {
+    /* Product page mobile */
     body.product-page {
-        padding-top: 105px; /* Changed from 70px */
+        padding-top: 70px;
     }
-}
-
-@media (max-width: 480px) {
-    body.product-page {
-        padding-top: 95px; /* Changed from 60px */
-    }
-}
     
     .product-detail-container {
         grid-template-columns: 1fr;
